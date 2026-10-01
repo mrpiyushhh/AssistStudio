@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AssitStudio — Software, engineered properly</title>
+  <meta name="description"
+    content="AssitStudio designs and builds web platforms, mobile apps and internal tools for startups and growing businesses. Senior engineers only.">
+  <meta name="theme-color" content="#0B0B0C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=22">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Reused arrow icons -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 16 16">
+      <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 16 16">
+      <path d="M13 8H3M7 4L3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+  </svg>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="nav" data-theme="dark">
+    <div class="nav-inner">
+      <a href="#top" class="logo" aria-label="AssitStudio, home"><span class="logo-mark"
+          aria-hidden="true"></span>AssitStudio</a>
+      <nav class="nav-pill" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta">Book a call <span class="btn-icon"><svg>
+            <use href="#i-arrow" />
+          </svg></span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu theme-dark" id="mobile-menu" hidden>
+    <a class="m-link" href="#about">About</a>
+    <a class="m-link" href="#work">Work</a>
+    <a class="m-link" href="#testimonials">Testimonials</a>
+    <a class="m-link" href="#contact">Contact</a>
+    <a class="btn btn-primary" href="#contact">Book a call <span class="btn-icon"><svg>
+          <use href="#i-arrow" />
+        </svg></span></a>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero theme-dark" id="top" data-theme="dark" aria-labelledby="hero-title">
+      <!-- Full hero cosmic space starfield & nebula canvas -->
+      <canvas id="hero-space-canvas" class="hero-space-canvas" aria-hidden="true"></canvas>
+      <div class="hero-glow hero-glow-primary" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-secondary" aria-hidden="true"></div>
+
+      <div class="wrap hero-grid">
+        <!-- Left column: Headline, Subtitle & Action Buttons -->
+        <div class="hero-content">
+          <h1 id="hero-title" class="display" data-fit>
+            <span class="line"><span>Software,</span></span>
+            <span class="line"><span><em>engineered</em></span></span>
+            <span class="line"><span>properly.</span></span>
+          </h1>
+
+          <p class="lead hero-lead reveal" style="--d:.16s">
+            We design and build high-performance web platforms, mobile apps, and distributed systems for ambitious
+            teams. Senior engineers only, from first commit to launch.
+          </p>
+
+          <div class="hero-actions reveal" style="--d:.24s">
+            <a href="#work" class="btn btn-primary btn-down">See our work <span class="btn-icon"><svg>
+                  <use href="#i-arrow" />
+                </svg></span></a>
+            <a href="#contact" class="btn btn-outline hero-contact-btn">Book a call</a>
+          </div>
+        </div>
+
+        <!-- Right column: Showreel Video Placeholder (Vertical Layout) -->
+        <div class="hero-visual reveal" style="--d:.2s">
+          <div class="hero-video-wrapper">
+            <div class="hero-video-card" id="hero-video-card" tabindex="0" role="button" aria-label="Play Studio Showreel">
+              <div class="hero-video-poster">
+                <img src="hero-video-poster.jpg" alt="AssitStudio Engineering Showreel Preview" class="hero-video-img" loading="eager">
+                <div class="video-overlay-gradient"></div>
+              </div>
+              
+              <!-- Video Top Badges -->
+              <div class="video-top-bar">
+                <span class="video-live-pill"><span class="live-dot"></span> Showreel</span>
+                <span class="video-quality-pill">4K · 60 FPS</span>
+              </div>
+
+              <!-- Center Glowing Play Button -->
+              <div class="video-play-center">
+                <div class="video-play-pulse" aria-hidden="true"></div>
+                <div class="video-play-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l11.2-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Bottom Bar with Frosted Glass Text Layout matching reference -->
+              <div class="video-bottom-bar">
+                <h3 class="video-card-title">Engineering<br>in Motion</h3>
+                <div class="video-meta-row">
+                  <span class="video-meta-item">
+                    <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                      <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0Zm0 14.5A6.5 6.5 0 1 1 14.5 8 6.51 6.51 0 0 1 8 14.5Zm.75-10.25h-1.5v4.5l3.5 2.1.75-1.23-2.75-1.62Z"/>
+                    </svg>
+                    01:24 min
+                  </span>
+                  <span class="video-meta-item meta-star">
+                    <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                      <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/>
+                    </svg>
+                    4.9 / 5.0
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ambient Glow Aura behind video card -->
+            <div class="hero-ambient-aura" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ============ 01 ABOUT ============ -->
+    <section class="section theme-light" id="about" data-theme="light" aria-labelledby="about-title">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <p class="eyebrow"><span class="idx">01</span>About</p>
+          <h2 id="about-title" class="h2">Built for launch day. <em>Still solid</em> in year five.</h2>
+          <p class="sec-lede">A small team of senior engineers and designers. No handoffs to juniors, no outsourcing, no
+            surprises on the invoice.</p>
+        </header>
+
+        <!-- CONTENT: any number of .stat; they share one row on desktop. Put the suffix in <em>. -->
+        <div class="stats">
+          <div class="stat reveal">
+            <p class="eyebrow">Years</p>
+            <p class="stat-num">8<em>+</em></p>
+            <p class="stat-text">Shipping production software for teams in 11 countries.</p>
+          </div>
+          <div class="stat reveal" style="--d:.08s">
+            <p class="eyebrow">Products shipped</p>
+            <p class="stat-num">60<em>+</em></p>
+            <p class="stat-text">From first commit to real users, and still running.</p>
+          </div>
+          <div class="stat reveal" style="--d:.16s">
+            <p class="eyebrow">Client retention</p>
+            <p class="stat-num">92<em>%</em></p>
+            <p class="stat-text">Most clients come back to us for their next build.</p>
+          </div>
+        </div>
+
+        <!-- Services Section Grid -->
+        <div class="services-block reveal" style="--d:.2s">
+          <p class="eyebrow services-eyebrow">Services we provide</p>
+          <div class="services-grid">
+            <!-- Card 01: AI Solutions -->
+            <div class="service-card service-card-ai">
+              <div class="service-card-glow" aria-hidden="true"></div>
+              <div class="service-head">
+                <span class="service-idx"><span class="idx-dot"></span>01</span>
+                <span class="service-badge">Intelligence</span>
+              </div>
+              <h3 class="service-title"><em>AI</em> Solutions</h3>
+              <p class="service-desc">Build intelligent systems that automate, analyze, and improve how businesses work.
+              </p>
+              <ul class="service-chips" aria-label="AI capabilities">
+                <li class="service-pill">
+                  <svg class="pill-svg" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M8.5 1.5L3.5 8.5h4.5l-1 6 6-8H8.5l1-5z" fill="none" stroke="currentColor"
+                      stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <span>AI Automation</span>
+                </li>
+                <li class="service-pill">
+                  <svg class="pill-svg" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M2.5 4A1.5 1.5 0 0 1 4 2.5h8A1.5 1.5 0 0 1 13.5 4v5A1.5 1.5 0 0 1 12 10.5H6.5L3 13.5V4z"
+                      fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                  <span>AI Chatbots &amp; Assistants</span>
+                </li>
+                <li class="service-pill">
+                  <svg class="pill-svg" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M6 10l-2 2a2.12 2.12 0 1 1-3-3l2-2M10 6l2-2a2.12 2.12 0 1 1 3 3l-2 2M5.5 10.5l5-5"
+                      fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                  <span>AI Integrations</span>
+                </li>
+                <li class="service-pill">
+                  <svg class="pill-svg" viewBox="0 0 16 16" aria-hidden="true">
+                    <path
+                      d="M2 5V3a1 1 0 0 1 1-1h2M11 2h2a1 1 0 0 1 1 1v2M14 11v2a1 1 0 0 1-1 1h-2M5 14H3a1 1 0 0 1-1-1v-2"
+                      fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+                    <circle cx="8" cy="8" r="2.5" fill="none" stroke="currentColor" stroke-width="1.3" />
+                  </svg>
+                  <span>AI Vision</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Card 02: Digital Solutions -->
+            <div class="service-card service-card-digital">
+              <div class="service-card-glow" aria-hidden="true"></div>
+              <div class="service-head">
+                <span class="service-idx"><span class="idx-dot"></span>02</span>
+                <span class="service-badge">Engineering</span>
+              </div>
+              <h3 class="service-title"><em>Digital</em> Solutions</h3>
+              <p class="service-desc">Build modern digital products and experiences that help businesses operate and
+                grow.</p>
+              <ul class="service-chips" aria-label="Digital capabilities">
+                <li class="service-pill">
+                  <svg class="pill-svg" viewBox="0 0 16 16" aria-hidden="true">
+                    <circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.3" />
+                    <path d="M2 8h12M8 2c2 2.5 2.5 9.5 0 12M8 2c-2 2.5-2.5 9.5 0 12" fill="none" stroke="currentColor"
+                      stroke-width="1.3" />
+                  </svg>
+                  <span>Websites</span>
+                </li>
+                <li class="service-pill">
+                  <svg class="pill-svg" viewBox="0 0 16 16" aria-hidden="true">
+                    <rect x="2" y="2.5" width="12" height="11" rx="2" fill="none" stroke="currentColor"
+                      stroke-width="1.3" />
+                    <path d="M2 6h12M4.75 4.25h.01M6.75 4.25h.01" stroke="currentColor" stroke-width="1.4"
+                      stroke-linecap="round" />
+                  </svg>
+                  <span>Web Applications</span>
+                </li>
+                <li class="service-pill">
+                  <svg class="pill-svg" viewBox="0 0 16 16" aria-hidden="true">
+                    <rect x="3.5" y="1.5" width="9" height="13" rx="2" fill="none" stroke="currentColor"
+                      stroke-width="1.3" />
+                    <path d="M7 11.5h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+                  </svg>
+                  <span>Progressive Web Apps (PWA)</span>
+                </li>
+                <li class="service-pill">
+                  <svg class="pill-svg" viewBox="0 0 16 16" aria-hidden="true">
+                    <rect x="4.5" y="1.5" width="7" height="13" rx="1.8" fill="none" stroke="currentColor"
+                      stroke-width="1.3" />
+                    <circle cx="8" cy="11.5" r=".75" fill="currentColor" />
+                  </svg>
+                  <span>Mobile Applications</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 WORK ============ -->
+    <section class="section section-work theme-light" id="work" data-theme="light" aria-labelledby="work-title">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <p class="eyebrow"><span class="idx">02</span>Selected work</p>
+          <h2 id="work-title" class="h2">Real products, <em>measured</em> results.</h2>
+          <p class="sec-lede">A few recent builds. Full case studies and references are available on a call.</p>
+        </header>
+
+        <!-- CONTENT: any number of .project. Set the client's colour with --project and a readable text colour with --project-fg.
+             .project-media accepts the HTML mockups below or an <img>/<video>, which fills the panel. -->
+        <ol class="projects">
+
+          <li class="project" style="--project:#2E4BF0; --project-fg:#F3F1EC">
+            <a class="project-card" href="#contact">
+              <div class="project-info">
+                <div class="project-top">
+                  <span class="project-idx">01</span>
+                  <span class="chip">Fintech · Web platform</span>
+                </div>
+                <h3 class="project-name">Ledgerly</h3>
+                <p class="project-desc">Rebuilt loan onboarding and payments for a lender serving 40,000 small
+                  businesses.</p>
+                <div class="project-foot">
+                  <p class="metric"><span class="metric-num">+42%</span><span class="metric-label">Conversion</span></p>
+                  <span class="btn btn-ghost btn-sm">View case study <span class="btn-icon"><svg>
+                        <use href="#i-arrow" />
+                      </svg></span></span>
+                </div>
+              </div>
+              <div class="project-media" aria-hidden="true">
+                <div class="mock">
+                  <div class="m-win">
+                    <div class="m-bar"><i></i><i></i><i></i><span class="m-url">app.ledgerly.com/overview</span></div>
+                    <div class="m-dash">
+                      <div class="m-side">
+                        <div class="m-brand"><i></i>Ledgerly</div>
+                        <span class="m-nav on">Overview</span>
+                        <span class="m-nav">Applications</span>
+                        <span class="m-nav">Loans</span>
+                        <span class="m-nav">Payments</span>
+                        <span class="m-nav">Customers</span>
+                        <span class="m-nav">Reports</span>
+                      </div>
+                      <div class="m-main">
+                        <div class="m-head"><b>Overview</b><span class="m-pill">Last 30 days</span></div>
+                        <div class="m-kpis">
+                          <div class="m-kpi"><small>Disbursed</small><b>$4.82M</b><em>+12.4%</em></div>
+                          <div class="m-kpi"><small>Applications</small><b>3,812</b><em>+42.0%</em></div>
+                          <div class="m-kpi"><small>Time to decision</small><b>6m 40s</b><em>−71%</em></div>
+                        </div>
+                        <div class="m-chart">
+                          <div class="m-chart-head"><span>Completed applications</span><span class="m-muted m-mono">vs.
+                              prev.</span></div>
+                          <svg viewBox="0 0 400 120" preserveAspectRatio="none">
+                            <path class="c-grid" d="M0 30H400M0 60H400M0 90H400" vector-effect="non-scaling-stroke" />
+                            <path class="c-prev" d="M0 102 C40 98 80 96 120 90 S200 86 240 78 S320 70 400 62"
+                              vector-effect="non-scaling-stroke" />
+                            <path class="c-area"
+                              d="M0 94 C30 90 50 82 80 84 S130 72 160 66 S210 74 240 58 S300 40 330 38 S380 24 400 18 L400 120 L0 120Z" />
+                            <path class="c-line"
+                              d="M0 94 C30 90 50 82 80 84 S130 72 160 66 S210 74 240 58 S300 40 330 38 S380 24 400 18"
+                              vector-effect="non-scaling-stroke" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li class="project" style="--project:#1F5A4B; --project-fg:#F3F1EC">
+            <a class="project-card" href="#contact">
+              <div class="project-info">
+                <div class="project-top">
+                  <span class="project-idx">02</span>
+                  <span class="chip">Healthcare · Mobile app</span>
+                </div>
+                <h3 class="project-name">Mediq</h3>
+                <p class="project-desc">Booking and patient records app for a network of 120 private clinics.</p>
+                <div class="project-foot">
+                  <p class="metric"><span class="metric-num">4.8</span><span class="metric-label">App Store
+                      rating</span></p>
+                  <span class="btn btn-ghost btn-sm">View case study <span class="btn-icon"><svg>
+                        <use href="#i-arrow" />
+                      </svg></span></span>
+                </div>
+              </div>
+              <div class="project-media" aria-hidden="true">
+                <div class="mock">
+                  <div class="m-phone a">
+                    <div class="m-status"><span>9:41</span><span>●●●</span></div>
+                    <div class="m-greet"><small>Good morning,</small><b>Sam</b></div>
+                    <div class="m-appt">
+                      <small>THU 14 OCT · 10:30</small>
+                      <b>Dr. Anika Rao</b>
+                      <span>Dermatology · Soho</span>
+                    </div>
+                    <div class="m-days">
+                      <span>M<b>11</b></span><span>T<b>12</b></span><span>W<b>13</b></span><span
+                        class="on">T<b>14</b></span><span>F<b>15</b></span>
+                    </div>
+                    <div class="m-list">
+                      <div>Soho clinic<span>0.4 mi</span></div>
+                      <div>Marylebone<span>1.2 mi</span></div>
+                      <div>Shoreditch<span>2.8 mi</span></div>
+                    </div>
+                  </div>
+                  <div class="m-phone b">
+                    <div class="m-status"><span>9:41</span><span>●●●</span></div>
+                    <div class="m-greet"><small>Thursday 14 Oct</small><b>Choose a time</b></div>
+                    <div class="m-slots">
+                      <span class="off">09:00</span><span>09:30</span><span>10:00</span>
+                      <span class="on">10:30</span><span class="off">11:00</span><span>11:30</span>
+                      <span>13:00</span><span class="off">13:30</span><span>14:00</span>
+                      <span>14:30</span><span>15:00</span><span class="off">15:30</span>
+                    </div>
+                    <div class="m-cta">Confirm booking</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li class="project" style="--project:#FF6A3D; --project-fg:#0B0B0C">
+            <a class="project-card" href="#contact">
+              <div class="project-info">
+                <div class="project-top">
+                  <span class="project-idx">03</span>
+                  <span class="chip">Logistics · Internal tool</span>
+                </div>
+                <h3 class="project-name">Parcel North</h3>
+                <p class="project-desc">A live dispatch dashboard that replaced six spreadsheets and a whiteboard.</p>
+                <div class="project-foot">
+                  <p class="metric"><span class="metric-num">−11 hrs</span><span class="metric-label">Per dispatcher,
+                      weekly</span></p>
+                  <span class="btn btn-ghost btn-sm">View case study <span class="btn-icon"><svg>
+                        <use href="#i-arrow" />
+                      </svg></span></span>
+                </div>
+              </div>
+              <div class="project-media" aria-hidden="true">
+                <div class="mock">
+                  <div class="m-win">
+                    <div class="m-bar"><i></i><i></i><i></i><span class="m-url">dispatch.parcelnorth.co</span></div>
+                    <div class="m-toolbar">
+                      <div><b>Dispatch</b><span class="m-muted">Today, 14 Oct</span></div>
+                      <div class="m-chips"><span class="on">All 142</span><span>In transit 58</span><span>Delayed
+                          4</span></div>
+                    </div>
+                    <div class="m-tr th">
+                      <span>Ref</span><span>Driver</span><span>Route</span><span>ETA</span><span>Status</span>
+                    </div>
+                    <div class="m-tr"><span class="ref">PN-4821</span><span>J. Okafor</span><span>Leeds →
+                        York</span><span class="m-mono">10:42</span><span class="m-st">In transit</span></div>
+                    <div class="m-tr"><span class="ref">PN-4822</span><span>M. Silva</span><span>Hull →
+                        Leeds</span><span class="m-mono">11:05</span><span class="m-st">Loading</span></div>
+                    <div class="m-tr"><span class="ref">PN-4823</span><span>A. Novak</span><span>York → Hull</span><span
+                        class="m-mono">09:58</span><span class="m-st done">Delivered</span></div>
+                    <div class="m-tr"><span class="ref">PN-4824</span><span>R. Patel</span><span>Leeds →
+                        Wakefield</span><span class="m-mono">12:20</span><span class="m-st late">Delayed</span></div>
+                    <div class="m-tr"><span class="ref">PN-4825</span><span>L. Brennan</span><span>Bradford →
+                        Leeds</span><span class="m-mono">11:37</span><span class="m-st">In transit</span></div>
+                    <div class="m-tr"><span class="ref">PN-4826</span><span>T. Ahmed</span><span>Harrogate →
+                        York</span><span class="m-mono">13:10</span><span class="m-st">Scheduled</span></div>
+                    <div class="m-tr"><span class="ref">PN-4827</span><span>C. Duarte</span><span>York →
+                        Selby</span><span class="m-mono">13:45</span><span class="m-st">Scheduled</span></div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li class="project" style="--project:#E6D8C0; --project-fg:#0B0B0C">
+            <a class="project-card" href="#contact">
+              <div class="project-info">
+                <div class="project-top">
+                  <span class="project-idx">04</span>
+                  <span class="chip">E-commerce · Performance</span>
+                </div>
+                <h3 class="project-name">Tallyhouse</h3>
+                <p class="project-desc">Headless storefront rebuild for an independent homeware brand.</p>
+                <div class="project-foot">
+                  <p class="metric"><span class="metric-num">0.6s</span><span class="metric-label">Load time, down from
+                      2.1s</span></p>
+                  <span class="btn btn-ghost btn-sm">View case study <span class="btn-icon"><svg>
+                        <use href="#i-arrow" />
+                      </svg></span></span>
+                </div>
+              </div>
+              <div class="project-media" aria-hidden="true">
+                <div class="mock">
+                  <div class="m-win">
+                    <div class="m-bar"><i></i><i></i><i></i><span class="m-url">tallyhouse.com/shop</span></div>
+                    <div class="m-store-head">
+                      <b>tallyhouse</b>
+                      <nav><span>Shop</span><span>Journal</span><span>Studio</span></nav>
+                      <span class="cart">Cart (2)</span>
+                    </div>
+                    <div class="m-store-title"><b>Autumn ceramics</b><span class="m-muted m-mono">24 pieces</span></div>
+                    <div class="m-products">
+                      <div class="m-product">
+                        <div class="ph"><svg viewBox="0 0 100 125">
+                            <ellipse cx="50" cy="116" rx="24" ry="3" fill="#D9CFBF" />
+                            <path d="M40 12h20v10c0 7 16 14 16 40 0 30-11 52-26 52S24 92 24 62c0-26 16-33 16-40z"
+                              fill="#C8643B" />
+                            <path d="M38 12h24" stroke="#A64F2C" stroke-width="3" />
+                          </svg></div>
+                        <div>Tall vase<span>£64</span></div>
+                      </div>
+                      <div class="m-product">
+                        <div class="ph"><svg viewBox="0 0 100 125">
+                            <ellipse cx="46" cy="104" rx="26" ry="3" fill="#D9CFBF" />
+                            <path d="M68 52h6a11 11 0 0 1 0 22h-6" fill="none" stroke="#2B2B2E" stroke-width="6" />
+                            <path d="M24 42h44v52a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8z" fill="#2B2B2E" />
+                          </svg></div>
+                        <div>Stoneware mug<span>£28</span></div>
+                      </div>
+                      <div class="m-product">
+                        <div class="ph"><svg viewBox="0 0 100 125">
+                            <ellipse cx="50" cy="98" rx="30" ry="3" fill="#D9CFBF" />
+                            <path d="M14 60h72c0 20-16 34-36 34S14 80 14 60z" fill="#8FA58A" />
+                            <ellipse cx="50" cy="60" rx="36" ry="6" fill="#B7C7B2" />
+                          </svg></div>
+                        <div>Serving bowl<span>£46</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 03 CLIENTS ============ -->
+    <section class="section theme-dark" id="testimonials" data-theme="dark" aria-labelledby="testimonials-title">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <p class="eyebrow"><span class="idx">03</span>Testimonials</p>
+          <h2 id="testimonials-title" class="h2">In their <em>own</em> words.</h2>
+          <div class="controls sec-aside">
+            <div class="counter-group">
+              <p class="counter" aria-live="polite"><b data-current>01</b> / <span data-total>01</span></p>
+              <div class="progress" data-progress aria-hidden="true"></div>
+            </div>
+            <div class="arrows">
+              <button class="arrow" data-prev aria-label="Previous testimonial"><svg>
+                  <use href="#i-arrow-left" />
+                </svg></button>
+              <button class="arrow" data-next aria-label="Next testimonial"><svg>
+                  <use href="#i-arrow" />
+                </svg></button>
+            </div>
+          </div>
+        </header>
+
+        <div class="clients-body">
+          <!-- The 3D particle knot is fitted into this box; it stretches to the quote's height -->
+          <div class="clients-stage" data-stage="clients" aria-hidden="true"></div>
+          <!-- CONTENT: any number of .quote. Long quotes get a smaller size automatically. .avatar accepts initials or an <img>. -->
+          <div class="quotes reveal">
+            <figure class="quote is-active">
+              <span class="qmark" aria-hidden="true">“</span>
+              <blockquote>
+                <p>They shipped in eleven weeks what our last agency couldn't in eight months. The code was clean enough
+                  that our own team took it over in a week.</p>
+              </blockquote>
+              <figcaption>
+                <span class="avatar" aria-hidden="true">DW</span>
+                <span class="who"><b>Dana Whitfield</b><span>CTO, Ledgerly</span></span>
+              </figcaption>
+            </figure>
+            <figure class="quote">
+              <span class="qmark" aria-hidden="true">“</span>
+              <blockquote>
+                <p>AssitStudio asked better questions about our operations than we did. The dispatch tool paid for
+                  itself in the first quarter.</p>
+              </blockquote>
+              <figcaption>
+                <span class="avatar" aria-hidden="true">MO</span>
+                <span class="who"><b>Marcus Oyelaran</b><span>Head of Operations, Parcel North</span></span>
+              </figcaption>
+            </figure>
+            <figure class="quote">
+              <span class="qmark" aria-hidden="true">“</span>
+              <blockquote>
+                <p>No drama, no surprises. Weekly demos, honest estimates, and an app our patients actually rate well.
+                </p>
+              </blockquote>
+              <figcaption>
+                <span class="avatar" aria-hidden="true">PR</span>
+                <span class="who"><b>Priya Raman</b><span>VP Product, Mediq</span></span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 CONTACT ============ -->
+    <section class="section theme-lime" id="contact" data-theme="lime" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow"><span class="idx">04</span>Contact</p>
+          <h2 id="contact-title" class="h2 h2-xl" data-fit>Let's talk about <em>your</em> project.</h2>
+          <ul class="benefits">
+            <li><span class="b-icon" aria-hidden="true"><svg>
+                  <use href="#i-arrow" />
+                </svg></span>30-minute call, free, no obligation</li>
+            <li><span class="b-icon" aria-hidden="true"><svg>
+                  <use href="#i-arrow" />
+                </svg></span>Talk directly with a senior engineer</li>
+            <li><span class="b-icon" aria-hidden="true"><svg>
+                  <use href="#i-arrow" />
+                </svg></span>Clear estimate within 48 hours</li>
+          </ul>
+          <p class="fallback">Prefer email? <a class="text-link"
+              href="mailto:hello@assitstudio.dev">hello@assitstudio.dev</a></p>
+        </div>
+
+        <div class="form-card theme-dark">
+          <!-- To receive bookings by email, paste your form service endpoint into data-endpoint
+               (for example https://formspree.io/f/abcdwxyz). Left empty, the form runs in demo mode. -->
+          <form id="book-form" novalidate data-endpoint="">
+            <div class="form-head">
+              <p class="eyebrow">Book a call</p>
+              <h3 class="h3">Tell us a little. We'll do the rest.</h3>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="f-name">Name</label>
+              <input class="input" id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Cooper"
+                aria-describedby="e-name">
+              <p class="error-msg" id="e-name"><i aria-hidden="true">!</i><span></span></p>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="f-email">Work email</label>
+              <input class="input" id="f-email" name="email" type="email" autocomplete="email"
+                placeholder="jane@company.com" aria-describedby="e-email">
+              <p class="error-msg" id="e-email"><i aria-hidden="true">!</i><span></span></p>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="f-project">What are you building?</label>
+              <textarea class="input" id="f-project" name="project" rows="3"
+                placeholder="A customer portal for our logistics platform. We have designs and need a team to build it."
+                aria-describedby="e-project"></textarea>
+              <p class="error-msg" id="e-project"><i aria-hidden="true">!</i><span></span></p>
+            </div>
+
+            <!-- Date and time picker.
+                 Your availability, in YOUR timezone: data-studio-tz (IANA name, e.g. Europe/London),
+                 data-start / data-end = working hours (24h), data-days = working weekdays (0 Sun … 6 Sat),
+                 data-step = slot length in minutes, data-max-days = how far ahead, data-lead-hours = minimum notice.
+                 Visitors see these slots converted to their own timezone and regional format.
+                 The booking is sent with the time in your timezone, theirs, and UTC. -->
+            <div class="field picker" data-picker data-studio-tz="Europe/London" data-start="09:00" data-end="18:00"
+              data-step="30" data-days="1,2,3,4,5" data-max-days="60" data-lead-hours="2">
+              <div class="when-grid">
+                <div class="when-col">
+                  <span class="field-label" id="date-label">Date</span>
+                  <div class="when-wrap">
+                    <button type="button" class="input when-trigger is-empty" data-date-trigger aria-haspopup="dialog"
+                      aria-expanded="false" aria-controls="date-pop" aria-labelledby="date-label date-value">
+                      <span id="date-value" data-date-value>Pick a date</span>
+                      <svg class="when-icon" viewBox="0 0 20 20" aria-hidden="true">
+                        <rect x="3" y="4.5" width="14" height="12.5" rx="2.5" fill="none" stroke="currentColor"
+                          stroke-width="1.5" />
+                        <path d="M3 8.5h14M7 3v3M13 3v3" fill="none" stroke="currentColor" stroke-width="1.5"
+                          stroke-linecap="round" />
+                      </svg>
+                    </button>
+                    <div class="when-pop when-pop--date" id="date-pop" role="dialog" aria-label="Choose a date"
+                      data-date-pop hidden>
+                      <div class="cal">
+                        <div class="cal-head">
+                          <p class="cal-month" aria-live="polite"></p>
+                          <div class="cal-nav">
+                            <button type="button" class="cal-btn" data-cal-prev aria-label="Previous month"><svg>
+                                <use href="#i-arrow-left" />
+                              </svg></button>
+                            <button type="button" class="cal-btn" data-cal-next aria-label="Next month"><svg>
+                                <use href="#i-arrow" />
+                              </svg></button>
+                          </div>
+                        </div>
+                        <div class="cal-week" aria-hidden="true" data-cal-week></div>
+                        <div class="cal-days" data-cal-days></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="when-col">
+                  <span class="field-label" id="time-label">Time</span>
+                  <div class="when-wrap">
+                    <button type="button" class="input when-trigger is-empty" data-time-trigger aria-haspopup="dialog"
+                      aria-expanded="false" aria-controls="time-pop" aria-labelledby="time-label time-value">
+                      <span id="time-value" data-time-value>Pick a time</span>
+                      <svg class="when-icon" viewBox="0 0 20 20" aria-hidden="true">
+                        <circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M10 6.5V10l2.5 1.8" fill="none" stroke="currentColor" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </button>
+                    <div class="when-pop when-pop--time" id="time-pop" role="dialog" aria-label="Choose a time"
+                      data-time-pop hidden>
+                      <p class="slots-head" data-slots-title>Pick a date first</p>
+                      <div class="slots-list" data-slots></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="when-tz" data-tz></p>
+              <input type="hidden" name="call_time_studio" data-out="studio">
+              <input type="hidden" name="call_time_visitor" data-out="visitor">
+              <input type="hidden" name="visitor_timezone" data-out="tz">
+              <input type="hidden" name="call_start_utc" data-out="utc">
+              <p class="error-msg"><i aria-hidden="true">!</i><span></span></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block"><span class="btn-text">Book a call</span><span
+                class="btn-icon"><svg>
+                  <use href="#i-arrow" />
+                </svg></span></button>
+            <p class="form-note">We reply within one business day. Your details stay with us.</p>
+            <p class="form-error" role="alert" hidden>Something went wrong sending your request. Please try again, or
+              email <a class="text-link" href="mailto:hello@assitstudio.dev">hello@assitstudio.dev</a>.</p>
+          </form>
+
+          <div id="book-success" class="success" tabindex="-1" hidden>
+            <span class="tick" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 10.5l4 4 8-9" />
+              </svg></span>
+            <h3 class="h3">Thanks, <span data-name>there</span>. <em>Request received.</em></h3>
+            <p>We'll send a calendar invite to <b data-email>you</b> for <b data-when>the time you picked</b>.</p>
+            <ol>
+              <li>A senior engineer reads your brief</li>
+              <li>30-minute call at the time you picked</li>
+              <li>Written estimate within 48 hours</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer theme-dark" data-theme="dark">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-intro">
+          <p class="footer-line">Software, <em>engineered</em> properly.</p>
+          <p class="footer-sub">Have a project in mind? <a class="text-link" href="#contact">Book a call</a></p>
+        </div>
+        <!-- CONTENT: replace the hrefs with your profiles -->
+        <ul class="social" aria-label="Social links">
+          <li><a class="social-btn" href="https://www.linkedin.com/" rel="noopener"><span class="s-icon"
+                aria-hidden="true"><svg viewBox="0 0 16 16">
+                  <path fill="currentColor"
+                    d="M3.6 5.6H1.2V14h2.4V5.6ZM2.4 1.5a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8ZM14.8 9.2c0-2.3-1.2-3.8-3.3-3.8-1.1 0-1.9.6-2.2 1.2V5.6H7V14h2.4V9.6c0-1.1.5-1.9 1.5-1.9s1.4.8 1.4 1.9V14h2.5V9.2Z" />
+                </svg></span>LinkedIn</a></li>
+          <li><a class="social-btn" href="https://github.com/" rel="noopener"><span class="s-icon"
+                aria-hidden="true"><svg viewBox="0 0 16 16">
+                  <path fill="currentColor"
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+                </svg></span>GitHub</a></li>
+          <li><a class="social-btn" href="https://x.com/" rel="noopener"><span class="s-icon" aria-hidden="true"><svg
+                  viewBox="0 0 16 16">
+                  <path fill="currentColor"
+                    d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
+                </svg></span>X</a></li>
+          <li><a class="social-btn" href="mailto:hello@assitstudio.dev"><span class="s-icon" aria-hidden="true"><svg
+                  viewBox="0 0 16 16">
+                  <rect x="1.5" y="3" width="13" height="10" rx="2" fill="none" stroke="currentColor"
+                    stroke-width="1.5" />
+                  <path d="m2 4.5 6 4.5 6-4.5" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linejoin="round" />
+                </svg></span>Email</a></li>
+        </ul>
+      </div>
+      <p class="footer-mark" data-fit-width aria-hidden="true">AssitStudio<span>.</span></p>
+      <div class="footer-bottom">
+        <p><span>© <span data-year>2026</span> AssitStudio Ltd.</span><span class="sep"
+            aria-hidden="true">·</span><span>Designed and built in-house.</span></p>
+        <a href="#top" class="to-top">Back to top <span class="t-icon" aria-hidden="true"><svg viewBox="0 0 16 16">
+              <path d="M8 13V3M4 7l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg></span></a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta">
+    <a href="#contact" class="btn btn-primary btn-block">Book a call <span class="btn-icon"><svg>
+          <use href="#i-arrow" />
+        </svg></span></a>
+  </div>
+
+  <div class="cursor-view" aria-hidden="true">View</div>
+
+  <script src="script.js?v=18"></script>
+  <script src="scene.js?v=18"></script>
+  <script src="hero-space.js?v=18"></script>
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js" } }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    if (window.initHeroSpace) window.initHeroSpace();
+    if (window.initScene) window.initScene(THREE);
+  </script>
+</body>
+
+</html>

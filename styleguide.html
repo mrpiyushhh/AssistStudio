@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AssitStudio Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .sg-block { padding: 96px 0; }
+    .sg-block + .sg-block { border-top: 1px solid var(--line); }
+    .sg-title { margin: 20px 0 48px; }
+    .sg-note { color: var(--muted); max-width: 60ch; margin: -24px 0 40px; }
+    .sg-grid { display: grid; gap: 16px; }
+    .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 900px) { .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; } }
+
+    .swatch { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: #fff; color: var(--ink); }
+    .swatch-chip { height: 120px; }
+    .swatch-body { padding: 16px 18px 18px; }
+    .swatch-body b { display: block; font-weight: 600; }
+    .swatch-body code { font-family: var(--mono); font-size: 13px; color: #5E5D58; }
+    .swatch-body p { margin-top: 8px; font-size: 14px; line-height: 1.5; color: #5E5D58; }
+
+    .theme-card { border-radius: var(--r-card); padding: 36px; display: flex; flex-direction: column; gap: 20px; min-height: 360px; }
+    .theme-card.theme-dark { background: var(--ink); }
+    .theme-card .h2 { font-size: 48px; }
+    .theme-card p.body { color: var(--muted); }
+
+    .type-row { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .type-row:first-of-type { border-top: 1px solid var(--line); }
+    .type-meta { font-family: var(--mono); font-size: 12px; line-height: 1.6; letter-spacing: .04em; color: var(--muted); }
+    @media (max-width: 760px) { .type-row { grid-template-columns: 1fr; gap: 10px; } }
+
+    .state { border-radius: 20px; padding: 28px; border: 1px solid var(--line); }
+    .state-label { display: block; margin-bottom: 18px; }
+    .state.dark { background: var(--ink); }
+    .stage-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+    .demo-nav { position: relative; inset: auto; padding: 16px; pointer-events: auto; border-radius: 20px; }
+    .demo-nav[data-theme="dark"] { background: var(--ink); }
+    .demo-nav[data-theme="light"] { background: var(--paper-2); }
+    .demo-nav[data-theme="lime"] { background: var(--lime); }
+    .demo-nav .nav-inner { max-width: none; }
+    @media (max-width: 960px) { .demo-nav .nav-pill { display: none; } }
+
+    .sg-projects .project { position: relative; top: auto; }
+    .sg-projects .project-card { height: 540px; }
+    .project-card.is-hover .btn-ghost { background: var(--project-fg); color: var(--project); border-color: var(--project-fg); }
+    .project-card.is-hover .btn-ghost .btn-icon { background: var(--project); color: var(--project-fg); transform: rotate(-45deg); }
+    .project-card.is-hover .project-media > * { transform: scale(1.03) translate(-1%, -1%); }
+
+    .space-row { display: flex; align-items: center; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .space-row .bar { height: 14px; border-radius: 4px; background: var(--ink); }
+    .space-row .type-meta { width: 150px; flex: none; }
+    .radius-demo { display: flex; gap: 16px; flex-wrap: wrap; }
+    .radius-demo div { width: 120px; height: 80px; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-family: var(--mono); font-size: 12px; }
+
+    .devices { display: flex; gap: 40px; align-items: flex-start; overflow-x: auto; padding-bottom: 8px; }
+    .device { flex: none; }
+    .device iframe { display: block; border: 0; border-radius: 28px; background: var(--ink); box-shadow: 0 30px 60px -30px rgba(0,0,0,.4); }
+    .device .eyebrow { margin-bottom: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+
+    <section class="section theme-dark" data-theme="dark">
+      <div class="wrap">
+        <p class="eyebrow"><span class="idx">SG</span>Style guide · v2</p>
+        <h1 class="display" style="margin-top:28px; font-size: clamp(56px, 8vw, 120px)">
+          <span class="line"><span>Engineered,</span></span>
+          <span class="line"><span><em>human</em> and clear.</span></span>
+        </h1>
+        <p class="lead" style="margin-top:36px; color: var(--muted)">Three section themes, two type voices and one accent rule. Every component reads the same tokens, so it looks right on ink, paper or lime without special cases.</p>
+        <div class="btn-row" style="margin-top:32px"><a class="btn btn-primary" href="index.html">View the site <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+      </div>
+    </section>
+
+    <div class="theme-light">
+      <div class="wrap">
+
+        <!-- COLOUR -->
+        <section class="sg-block">
+          <p class="eyebrow"><span class="idx">A</span>Colour</p>
+          <h2 class="h2 sg-title">A calm base, <em>one</em> loud accent.</h2>
+          <div class="sg-grid cols-3">
+            <div class="swatch"><div class="swatch-chip" style="background:#0B0B0C"></div><div class="swatch-body"><b>Ink</b><code>#0B0B0C</code><p>Dark sections, form card, text on paper and lime.</p></div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#F3F1EC"></div><div class="swatch-body"><b>Paper</b><code>#F3F1EC</code><p>Light sections. Text on ink. 17.4 : 1 against ink.</p></div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#C6F432"></div><div class="swatch-body"><b>Lime</b><code>#C6F432</code><p>Primary buttons, contact section, accent text on ink only. Never as text on paper.</p></div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#FF6A3D"></div><div class="swatch-body"><b>Signal orange</b><code>#FF6A3D</code><p>Form errors and a few particles. Used sparingly.</p></div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#A1A1A6"></div><div class="swatch-body"><b>Muted on ink</b><code>#A1A1A6</code><p>Secondary text on dark. 7.6 : 1.</p></div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#5E5D58"></div><div class="swatch-body"><b>Muted on paper</b><code>#5E5D58</code><p>Secondary text on paper. 6.0 : 1.</p></div></div>
+          </div>
+          <p class="sg-note" style="margin-top:32px">Project colours come from each client's brand and are set per card with <code>--project</code> and <code>--project-fg</code>. Pick the text colour that passes 4.5 : 1 on the brand colour.</p>
+          <div class="sg-grid cols-4">
+            <div class="swatch"><div class="swatch-chip" style="background:#2E4BF0"></div><div class="swatch-body"><b>Ledgerly</b><code>#2E4BF0 / paper</code></div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#1F5A4B"></div><div class="swatch-body"><b>Mediq</b><code>#1F5A4B / paper</code></div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#FF6A3D"></div><div class="swatch-body"><b>Parcel North</b><code>#FF6A3D / ink</code></div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#E6D8C0"></div><div class="swatch-body"><b>Tallyhouse</b><code>#E6D8C0 / ink</code></div></div>
+          </div>
+        </section>
+
+        <!-- THEMES & ACCENT RULE -->
+        <section class="sg-block">
+          <p class="eyebrow"><span class="idx">B</span>Themes</p>
+          <h2 class="h2 sg-title">Same parts, <em>three</em> moods.</h2>
+          <p class="sg-note">Every headline has one accent phrase in italic. On ink it turns lime, on paper it gets a hand-drawn lime marker, on lime it is underlined.</p>
+          <div class="sg-grid cols-3">
+            <div class="theme-card theme-dark is-in">
+              <p class="eyebrow"><span class="idx">01</span>Dark</p>
+              <h3 class="h2">Software, <em>engineered</em>.</h3>
+              <p class="body">Hero, testimonials, footer. The 3D scene shows through.</p>
+              <div><span class="btn btn-primary btn-sm">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span></div>
+            </div>
+            <div class="theme-card theme-light is-in" style="background:#fff">
+              <p class="eyebrow"><span class="idx">02</span>Paper</p>
+              <h3 class="h2">Real products, <em>measured</em>.</h3>
+              <p class="body">About and work. Colour comes from the projects.</p>
+              <div><span class="btn btn-dark btn-sm">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span></div>
+            </div>
+            <div class="theme-card theme-lime is-in">
+              <p class="eyebrow"><span class="idx">03</span>Lime</p>
+              <h3 class="h2">Let's talk about <em>your</em> project.</h3>
+              <p class="body">Contact only. One lime block per page.</p>
+              <div><span class="btn btn-dark btn-sm">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TYPE -->
+        <section class="sg-block">
+          <p class="eyebrow"><span class="idx">C</span>Typography</p>
+          <h2 class="h2 sg-title">Two voices, <em>clear</em> roles.</h2>
+          <div class="type-row"><div class="type-meta">Display · Instrument Serif<br>104–176px · 0.86 · −2%</div><p class="display" style="font-size:clamp(56px,8vw,120px)">Engineered</p></div>
+          <div class="type-row"><div class="type-meta">H2 · Instrument Serif<br>44–84px · 0.98 · −1.5%</div><p class="h2">Built for launch day.</p></div>
+          <div class="type-row"><div class="type-meta">Quote · Instrument Serif<br>30–50px · 1.12</div><p class="h3" style="font-size:clamp(30px,3.3vw,50px)">No drama, no surprises.</p></div>
+          <div class="type-row"><div class="type-meta">Numbers · Instrument Serif<br>64–168px · 0.85</div><p class="stat-num" style="margin:0; font-size:120px">92<em>%</em></p></div>
+          <div class="type-row"><div class="type-meta">Lead · Geist 400<br>18–21px · 1.5</div><p class="lead">We design and build web platforms, mobile apps and internal tools.</p></div>
+          <div class="type-row"><div class="type-meta">Body · Geist 400<br>17px · 1.6</div><p>A small team of senior engineers and designers. No handoffs to juniors, no outsourcing, no surprises on the invoice.</p></div>
+          <div class="type-row"><div class="type-meta">Label · Geist Mono 500<br>12px · uppercase · +8%</div><p class="eyebrow"><span class="idx">02</span>Selected work</p></div>
+          <p class="sg-note" style="margin-top:40px">Copy rules: sentence case for headings and buttons ("Book a call", "See our work"). Mono is only for labels, numbers and chips. Middots separate categories ("Fintech · Web platform").</p>
+        </section>
+
+        <!-- COMPONENTS -->
+        <section class="sg-block">
+          <p class="eyebrow"><span class="idx">D</span>Components</p>
+          <h2 class="h2 sg-title">States, <em>side by side</em>.</h2>
+
+          <p class="eyebrow state-label">Buttons · default / hover</p>
+          <div class="sg-grid cols-2" style="margin-bottom:40px">
+            <div class="state dark theme-dark">
+              <span class="type-meta state-label">On ink</span>
+              <div class="stage-row">
+                <span class="btn btn-primary">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+                <span class="btn btn-primary is-hover">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+                <span class="btn btn-outline">See our work</span>
+                <span class="btn btn-outline is-hover">See our work</span>
+              </div>
+            </div>
+            <div class="state" style="background:#fff">
+              <span class="type-meta state-label">On paper and lime</span>
+              <div class="stage-row">
+                <span class="btn btn-dark">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+                <span class="btn btn-dark is-hover">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+                <span class="btn btn-outline">See our work</span>
+                <span class="btn btn-outline is-hover">See our work</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="eyebrow state-label">Chips and labels</p>
+          <div class="state" style="margin-bottom:40px; background:#fff">
+            <div class="stage-row">
+              <span class="chip">Fintech · Web platform</span>
+              <span class="chip">React</span>
+              <span class="chip"><span class="dot"></span>Taking on 2 new projects</span>
+              <span class="eyebrow"><span class="idx">01</span>About</span>
+            </div>
+          </div>
+
+          <p class="eyebrow state-label">Navigation · top of page / scrolled, per theme</p>
+          <div class="sg-grid" style="margin-bottom:40px">
+            <div class="nav demo-nav" data-theme="dark">
+              <div class="nav-inner">
+                <a class="logo"><span class="logo-mark"></span>AssitStudio</a>
+                <nav class="nav-pill"><ul class="nav-links"><li><a><span class="n">01</span>About</a></li><li><a><span class="n">02</span>Work</a></li><li><a><span class="n">03</span>Testimonials</a></li><li><a><span class="n">04</span>Contact</a></li></ul></nav>
+                <span class="btn btn-primary btn-sm nav-cta">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+              </div>
+            </div>
+            <div class="nav demo-nav is-scrolled" data-theme="dark">
+              <div class="nav-inner">
+                <a class="logo"><span class="logo-mark"></span>AssitStudio</a>
+                <nav class="nav-pill"><ul class="nav-links"><li><a class="is-active"><span class="n">01</span>About</a></li><li><a><span class="n">02</span>Work</a></li><li><a><span class="n">03</span>Testimonials</a></li><li><a><span class="n">04</span>Contact</a></li></ul></nav>
+                <span class="btn btn-primary btn-sm nav-cta">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+              </div>
+            </div>
+            <div class="nav demo-nav is-scrolled" data-theme="light">
+              <div class="nav-inner">
+                <a class="logo"><span class="logo-mark"></span>AssitStudio</a>
+                <nav class="nav-pill"><ul class="nav-links"><li><a><span class="n">01</span>About</a></li><li><a class="is-active"><span class="n">02</span>Work</a></li><li><a><span class="n">03</span>Testimonials</a></li><li><a><span class="n">04</span>Contact</a></li></ul></nav>
+                <span class="btn btn-primary btn-sm nav-cta">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+              </div>
+            </div>
+            <div class="nav demo-nav is-scrolled" data-theme="lime">
+              <div class="nav-inner">
+                <a class="logo"><span class="logo-mark"></span>AssitStudio</a>
+                <nav class="nav-pill"><ul class="nav-links"><li><a><span class="n">01</span>About</a></li><li><a><span class="n">02</span>Work</a></li><li><a><span class="n">03</span>Testimonials</a></li><li><a class="is-active"><span class="n">04</span>Contact</a></li></ul></nav>
+                <span class="btn btn-primary btn-sm nav-cta">Book a call <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+              </div>
+            </div>
+          </div>
+
+          <p class="eyebrow state-label">Project card · default / hover</p>
+          <ol class="projects sg-projects" style="margin-bottom:40px">
+            <li class="project" style="--project:#2E4BF0; --project-fg:#F3F1EC">
+              <div class="project-card">
+                <div class="project-info">
+                  <div class="project-top"><span class="project-idx">01</span><span class="chip">Fintech · Web platform</span></div>
+                  <h3 class="project-name">Ledgerly</h3>
+                  <p class="project-desc">Default. Card takes the client's colour; mockups sit in light UI.</p>
+                  <div class="project-foot"><p class="metric"><span class="metric-num">+42%</span><span class="metric-label">Conversion</span></p><span class="btn btn-ghost btn-sm">View case study <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span></div>
+                </div>
+                <div class="project-media"><div class="mock"><div class="m-win"><div class="m-bar"><i></i><i></i><i></i><span class="m-url">app.ledgerly.com</span></div><div class="m-dash"><div class="m-side"><div class="m-brand"><i></i>Ledgerly</div><span class="m-nav on">Overview</span><span class="m-nav">Loans</span><span class="m-nav">Payments</span></div><div class="m-main"><div class="m-head"><b>Overview</b><span class="m-pill">Last 30 days</span></div><div class="m-kpis"><div class="m-kpi"><small>Disbursed</small><b>$4.82M</b><em>+12.4%</em></div><div class="m-kpi"><small>Applications</small><b>3,812</b><em>+42%</em></div><div class="m-kpi"><small>Decision</small><b>6m 40s</b><em>−71%</em></div></div></div></div></div></div></div>
+              </div>
+            </li>
+            <li class="project" style="--project:#FF6A3D; --project-fg:#0B0B0C">
+              <div class="project-card is-hover">
+                <div class="project-info">
+                  <div class="project-top"><span class="project-idx">03</span><span class="chip">Logistics · Internal tool</span></div>
+                  <h3 class="project-name">Parcel North</h3>
+                  <p class="project-desc">Hover. Button fills, arrow turns, mockup drifts in by 3%. A lime "View" cursor follows the pointer.</p>
+                  <div class="project-foot"><p class="metric"><span class="metric-num">−11 hrs</span><span class="metric-label">Per dispatcher, weekly</span></p><span class="btn btn-ghost btn-sm">View case study <span class="btn-icon"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span></div>
+                </div>
+                <div class="project-media"><div class="mock"><div class="m-win"><div class="m-bar"><i></i><i></i><i></i><span class="m-url">dispatch.parcelnorth.co</span></div><div class="m-toolbar"><div><b>Dispatch</b><span class="m-muted">Today</span></div><div class="m-chips"><span class="on">All 142</span><span>Delayed 4</span></div></div><div class="m-tr th"><span>Ref</span><span>Driver</span><span>Route</span><span>ETA</span><span>Status</span></div><div class="m-tr"><span class="ref">PN-4821</span><span>J. Okafor</span><span>Leeds → York</span><span class="m-mono">10:42</span><span class="m-st">In transit</span></div><div class="m-tr"><span class="ref">PN-4824</span><span>R. Patel</span><span>Leeds → Wakefield</span><span class="m-mono">12:20</span><span class="m-st late">Delayed</span></div></div></div></div>
+              </div>
+            </li>
+          </ol>
+
+          <p class="eyebrow state-label">Form · default / focus / error / selected / success</p>
+          <div class="sg-grid cols-2">
+            <div class="form-card theme-dark" style="grid-column:auto">
+              <div class="field"><label class="field-label">Default</label><input class="input" placeholder="jane@company.com"></div>
+              <div class="field"><label class="field-label">Focus</label><input class="input is-focus" value="jane@"></div>
+              <div class="field has-error"><label class="field-label">Error</label><input class="input" value="jane@company" aria-invalid="true"><p class="error-msg"><i aria-hidden="true">!</i><span>Enter a valid work email, like jane@company.com.</span></p></div>
+              <div class="field" style="margin:0"><span class="field-label">Time list · default / selected</span><div class="slots-list"><button type="button" class="slot">09:30</button><button type="button" class="slot" aria-pressed="true">10:30</button><button type="button" class="slot">11:00</button></div></div>
+            </div>
+            <div class="form-card theme-dark" style="grid-column:auto">
+              <div class="success">
+                <span class="tick" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg></span>
+                <h3 class="h3">Thanks, Jane. <em>Request received.</em></h3>
+                <p>We'll email <b>jane@company.com</b> within one business day with two time slots to choose from.</p>
+                <ol><li>A senior engineer reads your brief</li><li>30-minute call at the time you picked</li><li>Written estimate within 48 hours</li></ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SPACING -->
+        <section class="sg-block">
+          <p class="eyebrow"><span class="idx">E</span>Spacing &amp; shape</p>
+          <h2 class="h2 sg-title">Room to <em>breathe</em>.</h2>
+          <div class="sg-grid cols-2">
+            <div>
+              <div class="space-row"><span class="type-meta">8 · tight</span><span class="bar" style="width:8px"></span></div>
+              <div class="space-row"><span class="type-meta">16 · stack</span><span class="bar" style="width:16px"></span></div>
+              <div class="space-row"><span class="type-meta">24 · column gap</span><span class="bar" style="width:24px"></span></div>
+              <div class="space-row"><span class="type-meta">40 · gutter / card pad</span><span class="bar" style="width:40px"></span></div>
+              <div class="space-row"><span class="type-meta">104 · section head</span><span class="bar" style="width:104px"></span></div>
+              <div class="space-row"><span class="type-meta">104–168 · section</span><span class="bar" style="width:168px"></span></div>
+            </div>
+            <div>
+              <p class="type-meta" style="margin-bottom:16px">Radii</p>
+              <div class="radius-demo">
+                <div style="border-radius:999px">999 · pill</div>
+                <div style="border-radius:28px">28 · card</div>
+                <div style="border-radius:12px">12 · field</div>
+              </div>
+              <p class="type-meta" style="margin:32px 0 12px">Grid</p>
+              <p style="color:var(--muted); font-size:15px">12 columns, 24px gap, 1320px max width, 40 / 32 / 20px gutters. Section header: label full width, headline 8 columns, supporting line 4 columns. Breakpoints 1100, 960, 767.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- RESPONSIVE -->
+        <section class="sg-block">
+          <p class="eyebrow"><span class="idx">F</span>Responsive</p>
+          <h2 class="h2 sg-title">Phone and <em>tablet</em>.</h2>
+          <p class="sg-note">Live previews of the homepage. Splits stack, project cards stop stacking and show the mockup under the text, and a floating "Book a call" button stays at the bottom until the contact section.</p>
+          <div class="devices">
+            <div class="device"><p class="eyebrow">Mobile · 375</p><iframe src="index.html" width="375" height="780" title="Mobile preview" loading="lazy"></iframe></div>
+            <div class="device"><p class="eyebrow">Tablet · 768</p><iframe src="index.html" width="768" height="1024" title="Tablet preview" loading="lazy"></iframe></div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>
