@@ -4,7 +4,7 @@
 2. Add a "Career" page in the website
 3. Add Chatbot in the Bottom-right corner
 4. The animated AI video showing the visualization of solutions.
-5. Add "How we Work" Section after "Solutions"
+5. Add "How we Work" Section ✅
 6. Design & add a logo.
 7. Add a Mobile number option in Contact box (Optional).
 8. Add "Our Working Areas"
