@@ -185,6 +185,69 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
   $$('.reveal, .project').forEach((el) => revealer.observe(el));
 
+  /* ---------- How we Work: scroll-driven stages ---------- */
+  const processTrack = $('[data-process]');
+  if (processTrack) {
+    const steps = $$('.process-step', processTrack);
+    const panels = $$('.process-panel', processTrack);
+    const total = steps.length;
+    let active = 0;
+    const mqDesktop = window.matchMedia('(min-width: 961px)');
+
+    const setActive = (index) => {
+      if (index === active) return;
+      active = index;
+      steps.forEach((step, i) => {
+        step.classList.toggle('is-active', i === index);
+        step.classList.toggle('is-done', i < index);
+      });
+      panels.forEach((panel, i) => {
+        panel.classList.toggle('is-active', i === index);
+      });
+    };
+
+    const updateFromScroll = () => {
+      if (!mqDesktop.matches) return;
+      const rect = processTrack.getBoundingClientRect();
+      const trackH = processTrack.offsetHeight;
+      const viewH = window.innerHeight;
+      // Progress while sticky content is pinned: from when track top hits top, to when track bottom approaches
+      const scrolled = -rect.top;
+      const range = Math.max(1, trackH - viewH);
+      const progress = clamp01(scrolled / range);
+      // Hold first and last a bit longer
+      const idx = Math.min(total - 1, Math.floor(progress * total));
+      setActive(idx);
+    };
+
+    steps.forEach((step, i) => {
+      step.addEventListener('click', () => {
+        if (!mqDesktop.matches) {
+          setActive(i);
+          return;
+        }
+        const trackH = processTrack.offsetHeight;
+        const viewH = window.innerHeight;
+        const range = Math.max(1, trackH - viewH);
+        const targetProgress = (i + 0.5) / total;
+        const top = processTrack.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: top + targetProgress * range, behavior: 'smooth' });
+      });
+    });
+
+    let processRaf = 0;
+    const onProcessScroll = () => {
+      cancelAnimationFrame(processRaf);
+      processRaf = requestAnimationFrame(updateFromScroll);
+    };
+    window.addEventListener('scroll', onProcessScroll, { passive: true });
+    mqDesktop.addEventListener('change', () => {
+      if (!mqDesktop.matches) setActive(active);
+      else updateFromScroll();
+    });
+    updateFromScroll();
+  }
+
   /* ---------- Highlight the current section in the nav (built from the links) ---------- */
   const links = $$('.nav-links a');
   const spy = new IntersectionObserver((entries) => {

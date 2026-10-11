@@ -1,7 +1,7 @@
 /* ==========================================================================
    AssitStudio — site styles
 
-   SYSTEM
+   SYSTEMInc
    · Three section themes: .theme-dark (ink), .theme-light (paper), .theme-lime.
      Each theme sets --bg / --fg / --muted / --line / --line-strong, so every
      component reads the same tokens and works on any theme.
@@ -1672,6 +1672,352 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
 .services-cta-btn:hover {
   color: var(--ink, #0C0D11);
   background-size: 100% 100%;
+}
+
+/* ---------- How we Work: scroll-driven process ---------- */
+
+.process-section {
+  padding-bottom: clamp(48px, 6vw, 96px);
+}
+
+.process-section > .wrap > .sec-head {
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+
+.process-track {
+  position: relative;
+  height: 900vh;
+}
+
+.process-sticky {
+  position: sticky;
+  top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  padding-top: 12px;
+  padding-bottom: 24px;
+  box-sizing: border-box;
+}
+
+.process-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 64px);
+  width: 100%;
+  height: 100%;
+  max-height: 640px;
+  align-items: stretch;
+}
+
+.process-steps {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.process-steps::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  background: var(--line);
+  z-index: 0;
+}
+
+.process-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+  transition: color 0.35s var(--ease);
+  color: var(--muted);
+}
+
+.process-dot {
+  flex: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong, var(--line));
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease), transform 0.35s var(--ease);
+}
+
+.process-dot-num {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  transition: color 0.35s var(--ease);
+}
+
+.process-step-label {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  transition: color 0.35s var(--ease), font-style 0.35s var(--ease), font-weight 0.35s var(--ease);
+}
+
+.process-step.is-active {
+  color: var(--fg);
+}
+
+.process-step.is-active .process-dot {
+  background: var(--lime);
+  border-color: var(--lime);
+  box-shadow: 0 0 0 5px rgba(198, 244, 50, 0.28);
+  transform: scale(1.04);
+}
+
+.process-step.is-active .process-dot-num {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.process-step.is-active .process-step-label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 24px;
+  background-image: linear-gradient(var(--lime), var(--lime));
+  background-size: 100% 0.32em;
+  background-repeat: no-repeat;
+  background-position: 0 90%;
+  padding: 0 0.06em;
+}
+
+.process-step.is-done .process-dot {
+  border-color: var(--lime);
+  background: rgba(198, 244, 50, 0.15);
+}
+
+.process-step.is-done .process-dot-num {
+  color: var(--fg);
+}
+
+.process-detail {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+}
+
+.process-panel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto auto auto auto 1fr;
+  gap: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), visibility 0.45s;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.process-panel.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.process-panel-eyebrow {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.process-panel-title {
+  font-family: var(--serif);
+  font-size: clamp(35px, 3.6vw, 50px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: var(--fg);
+}
+
+.process-panel-text {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 50ch;
+  margin: 0 0 12px;
+}
+
+.process-panel-outcome {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--fg);
+  max-width: 50ch;
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  background: rgba(198, 244, 50, 0.12);
+  border-left: 3px solid var(--lime);
+  border-radius: 0 10px 10px 0;
+}
+
+.process-panel-outcome strong {
+  font-weight: 600;
+}
+
+.process-visual {
+  min-height: 0;
+  flex: 1;
+  display: flex;
+}
+
+.process-visual-inner {
+  width: 100%;
+  min-height: 140px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(198, 244, 50, 0.18), transparent 55%),
+    linear-gradient(160deg, #1a1c24 0%, #0e0f14 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--paper);
+  overflow: hidden;
+  position: relative;
+}
+
+.process-visual-icon {
+  font-family: var(--serif);
+  font-size: clamp(48px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--lime);
+  opacity: 0.9;
+}
+
+.process-visual-caption {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(243, 241, 236, 0.55);
+}
+
+.process-visual-1 { background: radial-gradient(ellipse at 25% 30%, rgba(198, 244, 50, 0.22), transparent 50%), linear-gradient(160deg, #1a1c24, #0e0f14); }
+.process-visual-2 { background: radial-gradient(ellipse at 70% 25%, rgba(198, 244, 50, 0.2), transparent 50%), linear-gradient(160deg, #181a22, #0c0d12); }
+.process-visual-3 { background: radial-gradient(ellipse at 40% 70%, rgba(198, 244, 50, 0.18), transparent 55%), linear-gradient(160deg, #1b1d26, #0e0f14); }
+.process-visual-4 { background: radial-gradient(ellipse at 60% 40%, rgba(198, 244, 50, 0.2), transparent 50%), linear-gradient(160deg, #171920, #0d0e13); }
+.process-visual-5 { background: radial-gradient(ellipse at 35% 35%, rgba(198, 244, 50, 0.22), transparent 52%), linear-gradient(160deg, #1a1c24, #0e0f14); }
+.process-visual-6 { background: radial-gradient(ellipse at 55% 20%, rgba(198, 244, 50, 0.2), transparent 50%), linear-gradient(160deg, #181a22, #0c0d12); }
+.process-visual-7 { background: radial-gradient(ellipse at 30% 60%, rgba(198, 244, 50, 0.18), transparent 55%), linear-gradient(160deg, #1b1d26, #0e0f14); }
+.process-visual-8 { background: radial-gradient(ellipse at 65% 45%, rgba(198, 244, 50, 0.2), transparent 50%), linear-gradient(160deg, #171920, #0d0e13); }
+.process-visual-9 { background: radial-gradient(ellipse at 45% 30%, rgba(198, 244, 50, 0.24), transparent 52%), linear-gradient(160deg, #1a1c24, #0e0f14); }
+
+@media (max-width: 960px) {
+  .process-track {
+    height: auto;
+  }
+
+  .process-sticky {
+    position: relative;
+    top: auto;
+    height: auto;
+    max-height: none;
+    display: block;
+    padding: 0;
+  }
+
+  .process-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    max-height: none;
+    height: auto;
+  }
+
+  .process-steps {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    justify-content: flex-start;
+    height: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .process-steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .process-steps::before {
+    display: none;
+  }
+
+  .process-step {
+    flex: none;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 88px;
+    text-align: center;
+  }
+
+  .process-dot {
+    width: 44px;
+    height: 44px;
+  }
+
+  .process-dot-num {
+    font-size: 14px;
+  }
+
+  .process-step-label {
+    font-size: 12px;
+    max-width: 88px;
+  }
+
+  .process-step.is-active .process-step-label {
+    font-size: 13px;
+    background-size: 100% 0.28em;
+  }
+
+  .process-detail {
+    position: relative;
+    height: auto;
+    min-height: 420px;
+  }
+
+  .process-panel {
+    position: absolute;
+    inset: 0;
+  }
+
+  .process-panel-text,
+  .process-panel-outcome {
+    max-width: none;
+  }
+
+  .process-visual-inner {
+    min-height: 120px;
+  }
 }
 
 /* ---------- Work: colour cards that stack as you scroll ---------- */
