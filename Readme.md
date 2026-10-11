@@ -1,6 +1,6 @@
 ### Sections & Point to add in website
 
-1. Why AssistStudio (In about Section)
+1. Why AssistStudio (In about Section) ✅
 2. Add a "Career" page in the website
 3. Add Chatbot in the Bottom-right corner
 4. The animated AI video showing the visualization of solutions.
@@ -14,18 +14,18 @@
 ### Improvement and Changes
 
 1. Edit the footer for Quicklink (if required)
-2. Replace Years / Products shipped / Client retention with something else
+2. Replace Years / Products shipped / Client retention with something else ✅
 3. Replace "Testimonials" with something that makes sense like "Our Thougths"
 
 
 ### Changes:
 
-1. Software, `engineered` properly. -> AI, `engineered` for impact.
-2. Description line -> We design and build intelligent solutions that solve real-world problems — from AI automation and computer vision to custom AI-powered applications, connected systems, and beyond.
-3. "See our work" -> "Explore our Solutions"
-4. "Book a call" -> "Discuss Your Project"
+1. Software, `engineered` properly. -> AI, `engineered` for impact. ✅
+2. Description line -> We design and build intelligent solutions that solve real-world problems — from AI automation and computer vision to custom AI-powered applications, connected systems, and beyond. ✅
+3. "See our work" -> "Explore our Solutions" ✅
+4. "Book a call" -> "Discuss Your Project" ✅
 5. Video title: AI in Action
-6. In About Section:
+6. In About Section: ✅
     i. Replace "Built for launch day. Still solid in year five." -> "Built around intelligence."
     ii. Description -> AssistStudio is an AI-first technology company focused on turning complex challenges into practical solutions. From intelligent automation and computer vision to AI-powered applications and connected systems, we bring AI, software, hardware and engineering together to help businesses move forward.
     ii. Statistics Replacements:

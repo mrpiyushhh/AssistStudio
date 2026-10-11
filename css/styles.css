@@ -1647,6 +1647,33 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
   opacity: 1;
 }
 
+.services-cta {
+  margin-top: clamp(40px, 5vw, 64px);
+  text-align: center;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.services-cta-btn {
+  display: inline;
+  color: var(--fg);
+  font-weight: 500;
+  text-decoration: none;
+  background-image: linear-gradient(var(--lime), var(--lime));
+  background-size: 100% 0.35em;
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  padding: 0 0.08em;
+  border-radius: 0.1em;
+  transition: background-size 0.25s var(--ease), color 0.2s var(--ease);
+}
+
+.services-cta-btn:hover {
+  color: var(--ink, #0C0D11);
+  background-size: 100% 100%;
+}
+
 /* ---------- Work: colour cards that stack as you scroll ---------- */
 
 #about {
