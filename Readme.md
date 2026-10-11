@@ -6,7 +6,7 @@
 4. The animated AI video showing the visualization of solutions.
 5. Add "How we Work" Section ✅
 6. Design & add a logo.
-7. Add a Mobile number option in Contact box (Optional).
+7. Add a Mobile number option in Contact box (Optional). ✅
 8. Add "Our Working Areas"
 9. Add a moving animation of tech stack we work with.
 
