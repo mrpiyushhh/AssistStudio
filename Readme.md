@@ -7,8 +7,7 @@
 5. Add "How we Work" Section ✅
 6. Design & add a logo.
 7. Add a Mobile number option in Contact box (Optional). ✅
-8. Add "Our Working Areas"
-9. Add a moving animation of tech stack we work with.
+8. Add "Our Working Areas" / "AI Across Industry" ✅
 
 
 ### Improvement and Changes
@@ -42,7 +41,7 @@
             04. From Idea to Implementation -> We aim to support the journey from understanding a problem and exploring an idea to building, integrating, and deploying a solution — with an approach tailored to the project's needs.
         - Add a CTA button Again with: "Let's explore what's possible." -> Have a business challenge or an AI idea? Let's discuss what we could build together.
 
-### AI Across Industries
+### AI Across Industries ✅
 
 1. Manufacturing & Industry: AI for factories, production lines, equipment, and quality control.
     - Computer vision for defect detection, unit countings, vision monitoring and quality inspection.
@@ -103,3 +102,43 @@
     - Customized AI solutions and integrations tailored to your business needs.
     - End-to-end chatbots, agentic workflows, voice agents to automate complex processes.
     - Tailored software, computer vision, and intelligent system development for specialized use cases.
+
+### Our Services ✅
+
+From intelligent ideas to real-world solutions.
+Explore our AI, software, and intelligent systems capabilities - designed to solve specific challenges, integrate with existing workflows, and support new possibilities.
+
+1. AI Agents & Workflow Automation
+- Build intelligent agents and automated workflows that handle repetitive tasks, connect tools, and streamline complex business processes.
+- · AI Chatbots · AI agents · Multi-agent systems · Workflow automation · Tool integrations
+- Best matched areas:
+Business & Enterprise Operations · IT & Software · Logistics & Supply Chain · Healthcare & Life Sciences · Banking, Finance & Insurance · Retail & E-commerce · Custom Solutions
+
+2. AI Integration & Custom AI Solutions
+- Integrate AI capabilities into existing products or build custom AI-powered systems tailored to specific business requirements.
+- LLM integration · RAG systems · AI APIs · Knowledge assistants · Custom AI pipelines
+- Best matched areas:
+IT & Software · Business & Enterprise Operations · Healthcare & Life Sciences · Banking, Finance & Insurance · Agriculture & AgriTech · Custom Solutions
+
+3. Computer Vision & Visual Intelligence
+- Turn images and video into useful insights with systems that detect objects, inspect products, recognize patterns, and monitor visual environments.
+- Object detection · Quality inspection · OCR and document extraction · Image analysis · Video analytics
+- Best matched areas:
+Manufacturing & Industry · Logistics & Supply Chain · Agriculture & AgriTech · Retail & E-commerce · Healthcare & Life Sciences · Custom Solutions
+
+4. AI-Powered Web & Mobile Applications (As required)
+- Design and develop digital products with AI capabilities built into the experience, from intelligent web platforms to mobile applications.
+- Web applications · Mobile apps · SaaS products · AI-powered interfaces · Backend APIs
+- Best matched areas:
+IT & Software · Business & Enterprise Operations · Retail & E-commerce · Agriculture & AgriTech · Healthcare & Life Sciences · Banking, Finance & Insurance · Custom Solutions
+
+5. AI-Powered Robotics & Intelligent Systems
+- Connect software, sensors, and physical systems to enable smarter monitoring, automation, and data-driven operations.
+- Sensor analytics · Robotics integrations · Edge AI · Smart monitoring
+- Best matched areas:
+Manufacturing & Industry · Logistics & Supply Chain · Agriculture & AgriTech · Custom Solutions
+
+6. Deployment, Integration & Ongoing Support
+- Take solutions from development to deployment with the infrastructure, integrations, and maintenance needed to keep them running.
+- Cloud deployment · API integration · System integration · Monitoring · Maintenance and optimization
+- Best matched areas: Covers all the areas.

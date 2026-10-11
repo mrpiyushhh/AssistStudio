@@ -354,9 +354,34 @@
       });
     };
 
-    bindCursor($$('.project-card'), 'View');
+    bindCursor($$('.project-card'), 'Discuss');
     bindCursor($$('.industry-card'), 'Explore');
   }
+
+  /* Prefill contact "What are you building?" from a service card click */
+  $$('.project-card[data-service]').forEach((card) => {
+    card.addEventListener('click', () => {
+      const name = card.getAttribute('data-service');
+      if (!name) return;
+      try { sessionStorage.setItem('prefill-service', name); } catch (err) {}
+    });
+  });
+
+  const prefillService = () => {
+    let name = '';
+    try { name = sessionStorage.getItem('prefill-service') || ''; } catch (err) {}
+    if (!name) return;
+    const project = $('#f-project');
+    if (project) {
+      project.value = `I want to discuss ${name}`;
+    }
+    try { sessionStorage.removeItem('prefill-service'); } catch (err) {}
+  };
+  if (location.hash === '#contact') prefillService();
+  window.addEventListener('hashchange', () => {
+    if (location.hash === '#contact') prefillService();
+  });
+  setTimeout(prefillService, 0);
 
   /* ---------- Hero depth: the headline drifts slightly against the 3D model ---------- */
   const rootStyle = document.documentElement.style;
