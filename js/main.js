@@ -737,7 +737,6 @@
   const rules = {
     name: (v) => v.trim().length > 1 || 'Tell us your name.',
     email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'Enter a valid work email, like jane@company.com.',
-    project: (v) => v.trim().length >= 10 || 'A sentence or two is enough.',
   };
   const fields = $$('.input', form).filter((f) => rules[f.name]);
 
@@ -755,12 +754,53 @@
     input.addEventListener('input', () => { if (input.closest('.field').classList.contains('has-error')) check(input); });
   });
 
+  /* Phone: optional, but if filled must match selected country digit length */
+  const phoneField = $('[data-phone-field]', form);
+  const phoneCc = phoneField ? $('#f-cc', phoneField) : null;
+  const phoneNum = phoneField ? $('#f-phone', phoneField) : null;
+
+  const checkPhone = () => {
+    if (!phoneField || !phoneCc || !phoneNum) return true;
+    const raw = phoneNum.value.replace(/\D/g, '');
+    phoneNum.value = raw; // keep digits only
+    if (!raw) {
+      phoneField.classList.remove('has-error');
+      phoneNum.setAttribute('aria-invalid', 'false');
+      $('.error-msg span', phoneField).textContent = '';
+      return true;
+    }
+    const opt = phoneCc.selectedOptions[0];
+    const allowed = (opt?.dataset.digits || '10').split(',').map(Number);
+    const ok = allowed.includes(raw.length);
+    phoneField.classList.toggle('has-error', !ok);
+    phoneNum.setAttribute('aria-invalid', String(!ok));
+    const range = allowed.length === 1
+      ? `${allowed[0]} digits`
+      : `${allowed[0]}–${allowed[allowed.length - 1]} digits`;
+    $('.error-msg span', phoneField).textContent = ok
+      ? ''
+      : `Enter a valid number for ${phoneCc.value} (${range}).`;
+    return ok;
+  };
+
+  if (phoneNum) {
+    phoneNum.addEventListener('input', () => {
+      phoneNum.value = phoneNum.value.replace(/\D/g, '');
+      if (phoneField.classList.contains('has-error') || phoneNum.value) checkPhone();
+    });
+    phoneNum.addEventListener('blur', () => { if (phoneNum.value) checkPhone(); });
+  }
+  if (phoneCc) {
+    phoneCc.addEventListener('change', () => {
+      if (phoneNum && phoneNum.value) checkPhone();
+    });
+  }
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const firstInvalid = fields.map((f) => [f, check(f)]).find(([, ok]) => !ok);
-    const whenOk = picker ? picker.validate() : true;
     if (firstInvalid) { firstInvalid[0].focus(); return; }
-    if (!whenOk) { picker.focusFirst(); return; }
+    if (!checkPhone()) { phoneNum?.focus(); return; }
 
     const btn = $('[type="submit"]', form);
     const btnText = $('.btn-text', btn);
@@ -772,12 +812,15 @@
     // What you receive. Each key becomes a labelled line in the email.
     const name = $('#f-name').value.trim();
     const email = $('#f-email').value.trim();
+    const phoneDigits = (phoneNum && phoneNum.value.replace(/\D/g, '')) || '';
+    const phoneFull = phoneDigits ? `${phoneCc?.value || ''} ${phoneDigits}`.trim() : '';
     const when = picker ? picker.details() : null;
     const payload = {
       _subject: `Call booked: ${name}${when ? ` \u2014 ${when.studio}` : ''}`,
       _replyto: email,
       Name: name,
       Email: email,
+      Phone: phoneFull,
       'Call time (your timezone)': when ? when.studio : '',
       'Call time (their timezone)': when ? when.visitor : '',
       'What they are building': $('#f-project').value.trim(),
@@ -797,14 +840,18 @@
     send.then(() => {
       $('[data-name]', success).textContent = name.split(/\s+/)[0];
       $('[data-email]', success).textContent = email;
-      if (picker) $('[data-when]', success).textContent = picker.label();
+      const whenLabel = picker ? picker.label() : '';
+      const whenEl = $('[data-when]', success);
+      const whenWrap = $('[data-when-wrap]', success);
+      if (whenEl && whenLabel) whenEl.textContent = whenLabel;
+      if (whenWrap) whenWrap.hidden = !whenLabel;
       form.hidden = true;
       success.hidden = false;
       success.focus();
       layoutChanged();
     }).catch(() => {
       btn.disabled = false;
-      btnText.textContent = 'Book a call';
+      btnText.textContent = 'Book a Discovery Call';
       if (formError) formError.hidden = false;
     });
   });
