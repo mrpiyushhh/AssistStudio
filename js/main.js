@@ -190,11 +190,14 @@
   if (processTrack) {
     const steps = $$('.process-step', processTrack);
     const panels = $$('.process-panel', processTrack);
+    const stepsList = $('.process-steps', processTrack);
     const total = steps.length;
     let active = 0;
-    const mqDesktop = window.matchMedia('(min-width: 961px)');
+    let syncingStrip = false;
+    const isMobileProcess = () => window.matchMedia('(max-width: 960px)').matches;
 
-    const setActive = (index) => {
+    const applyActive = (index) => {
+      if (index < 0 || index >= total) return;
       if (index === active) return;
       active = index;
       steps.forEach((step, i) => {
@@ -206,24 +209,62 @@
       });
     };
 
-    const updateFromScroll = () => {
-      if (!mqDesktop.matches) return;
+    const centerStepInStrip = (index) => {
+      const step = steps[index];
+      if (!step || !stepsList) return;
+      const listRect = stepsList.getBoundingClientRect();
+      const stepRect = step.getBoundingClientRect();
+      const offset = stepRect.left - listRect.left - (listRect.width / 2) + (stepRect.width / 2);
+      if (Math.abs(offset) < 2) return;
+      syncingStrip = true;
+      stepsList.scrollBy({ left: offset, behavior: 'smooth' });
+      window.setTimeout(() => { syncingStrip = false; }, 420);
+    };
+
+    const setActive = (index, { scrollStrip = false } = {}) => {
+      applyActive(index);
+      if (scrollStrip && isMobileProcess()) centerStepInStrip(index);
+    };
+
+    /* Desktop: vertical track progress drives the active stage */
+    const updateFromVerticalScroll = () => {
+      if (isMobileProcess()) return;
       const rect = processTrack.getBoundingClientRect();
       const trackH = processTrack.offsetHeight;
       const viewH = window.innerHeight;
-      // Progress while sticky content is pinned: from when track top hits top, to when track bottom approaches
       const scrolled = -rect.top;
       const range = Math.max(1, trackH - viewH);
       const progress = clamp01(scrolled / range);
-      // Hold first and last a bit longer
       const idx = Math.min(total - 1, Math.floor(progress * total));
       setActive(idx);
     };
 
+    /* Mobile: map scrollLeft 0→max across stages 0→8 so first & last are reachable */
+    const updateFromHorizontalScroll = () => {
+      if (!isMobileProcess() || !stepsList || syncingStrip) return;
+      const maxScroll = Math.max(0, stepsList.scrollWidth - stepsList.clientWidth);
+      let idx = 0;
+      if (maxScroll > 1) {
+        const progress = clamp01(stepsList.scrollLeft / maxScroll);
+        idx = Math.min(total - 1, Math.round(progress * (total - 1)));
+      }
+      applyActive(idx);
+    };
+
+    const scrollStripToIndex = (index) => {
+      if (!stepsList || !isMobileProcess()) return;
+      const maxScroll = Math.max(0, stepsList.scrollWidth - stepsList.clientWidth);
+      const target = total <= 1 ? 0 : (index / (total - 1)) * maxScroll;
+      syncingStrip = true;
+      stepsList.scrollTo({ left: target, behavior: 'smooth' });
+      window.setTimeout(() => { syncingStrip = false; }, 450);
+    };
+
     steps.forEach((step, i) => {
       step.addEventListener('click', () => {
-        if (!mqDesktop.matches) {
-          setActive(i);
+        if (isMobileProcess()) {
+          applyActive(i);
+          scrollStripToIndex(i);
           return;
         }
         const trackH = processTrack.offsetHeight;
@@ -236,16 +277,35 @@
     });
 
     let processRaf = 0;
-    const onProcessScroll = () => {
+    window.addEventListener('scroll', () => {
       cancelAnimationFrame(processRaf);
-      processRaf = requestAnimationFrame(updateFromScroll);
-    };
-    window.addEventListener('scroll', onProcessScroll, { passive: true });
-    mqDesktop.addEventListener('change', () => {
-      if (!mqDesktop.matches) setActive(active);
-      else updateFromScroll();
+      processRaf = requestAnimationFrame(updateFromVerticalScroll);
+    }, { passive: true });
+
+    if (stepsList) {
+      let stripRaf = 0;
+      stepsList.addEventListener('scroll', () => {
+        cancelAnimationFrame(stripRaf);
+        stripRaf = requestAnimationFrame(updateFromHorizontalScroll);
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(processRaf);
+      processRaf = requestAnimationFrame(() => {
+        if (isMobileProcess()) updateFromHorizontalScroll();
+        else updateFromVerticalScroll();
+      });
     });
-    updateFromScroll();
+
+    // Always start on Discovery Call (stage 1)
+    active = -1;
+    applyActive(0);
+    if (isMobileProcess() && stepsList) {
+      stepsList.scrollLeft = 0;
+    } else {
+      updateFromVerticalScroll();
+    }
   }
 
   /* ---------- Highlight the current section in the nav (built from the links) ---------- */
