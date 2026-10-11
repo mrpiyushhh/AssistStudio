@@ -412,11 +412,17 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
   font-size: 18px;
   line-height: 1.55;
   max-width: 38ch;
+  text-align: justify;
 }
 
 @media (min-width: 961px) {
+  .sec-head {
+    margin-bottom: clamp(36px, 4vw, 56px);
+  }
+
   .sec-head>.sec-lede {
     font-size: 19.5px;
+    max-width: none;
   }
 }
 
@@ -1417,7 +1423,7 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
 }
 
 .stat-num {
-  margin: 32px 0 px;
+  margin: 32px 0 24px;
   font-family: var(--serif);
   font-size: clamp(36px, 4.2vw, 56px);
   line-height: 1.05;
@@ -1442,8 +1448,32 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
   border-top: 1px solid var(--line);
 }
 
+.services-head {
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
 .services-eyebrow {
-  margin-bottom: 28px;
+  margin-bottom: 0;
+}
+
+.services-head .services-title {
+  font-size: clamp(36px, 4.4vw, 58px);
+  line-height: 1.08;
+}
+
+.services-head .services-title em {
+  white-space: normal;
+}
+
+.services-head .sec-lede {
+  font-size: 18px;
+  max-width: 44ch;
+}
+
+@media (min-width: 961px) {
+  .services-head .sec-lede {
+    font-size: 19.5px;
+  }
 }
 
 .services-grid {
