@@ -321,7 +321,7 @@
     if (en.isIntersecting) links.forEach((l) => l.classList.remove('is-active'));
   }, { rootMargin: '-45% 0px -50% 0px' }).observe($('#top'));
 
-  /* ---------- "View" cursor over project cards ---------- */
+  /* ---------- Custom cursor over project + industry cards ---------- */
   const cursor = $('.cursor-view');
   if (cursor && finePointer && !reduceMotion) {
     const pos = { x: -200, y: -200, tx: -200, ty: -200, s: 0, ts: 0 };
@@ -339,10 +339,23 @@
     };
     const kick = () => { if (!running) { running = true; requestAnimationFrame(loop); } };
     window.addEventListener('pointermove', (e) => { pos.tx = e.clientX; pos.ty = e.clientY; kick(); }, { passive: true });
-    $$('.project-card').forEach((card) => {
-      card.addEventListener('pointerenter', () => { pos.ts = 1; kick(); });
-      card.addEventListener('pointerleave', () => { pos.ts = 0; kick(); });
-    });
+
+    const bindCursor = (els, label) => {
+      els.forEach((el) => {
+        el.addEventListener('pointerenter', () => {
+          cursor.textContent = label;
+          pos.ts = 1;
+          kick();
+        });
+        el.addEventListener('pointerleave', () => {
+          pos.ts = 0;
+          kick();
+        });
+      });
+    };
+
+    bindCursor($$('.project-card'), 'View');
+    bindCursor($$('.industry-card'), 'Explore');
   }
 
   /* ---------- Hero depth: the headline drifts slightly against the 3D model ---------- */
@@ -861,6 +874,163 @@
     contactVisible = en.isIntersecting;
     mobileBar.classList.toggle('is-hidden', contactVisible || menuOpen);
   }, { threshold: 0.1 }).observe($('#contact'));
+
+  /* ---------- AI Across Industries modal ---------- */
+  const industryData = {
+    manufacturing: {
+      eyebrow: 'Industry 01',
+      title: 'Manufacturing & Industry',
+      desc: 'AI for factories, production lines, equipment, and quality control.',
+      items: [
+        'Computer vision for defect detection, unit counting, vision monitoring and quality inspection.',
+        'Predictive maintenance and equipment anomaly detection.',
+        'Production monitoring and process optimization.',
+        'AI assistants for technical manuals and operational knowledge.',
+        'AI/Vision based robotics and industrial automation integrations.',
+      ],
+    },
+    logistics: {
+      eyebrow: 'Industry 02',
+      title: 'Logistics & Supply Chain',
+      desc: 'AI for moving, tracking, storing, and delivering goods.',
+      items: [
+        'Inventory monitoring and stock forecasting.',
+        'Document extraction from invoices, purchase orders, and shipping records.',
+        'Warehouse computer vision and package identification.',
+        'Warehouse automation with vision-based tracking.',
+        'AI assistants for shipment status and operational queries.',
+      ],
+    },
+    agriculture: {
+      eyebrow: 'Industry 03',
+      title: 'Agriculture & AgriTech',
+      desc: 'AI for farms, crops, agricultural equipment, and resource management.',
+      items: [
+        'Crop disease and pest detection using computer vision.',
+        'Crop health monitoring from images and sensor data.',
+        'Agricultural knowledge assistants and farm-management automation.',
+        'Smart irrigation and IoT-based monitoring.',
+      ],
+    },
+    it: {
+      eyebrow: 'Industry 04',
+      title: 'IT & Software',
+      desc: 'AI for software teams, technical operations, and existing digital products.',
+      items: [
+        'AI copilots and internal knowledge assistants.',
+        'Intelligent search across technical documentation.',
+        'Resume screening and candidate matching.',
+        'Employee support assistants and policy Q&A.',
+        'AI features integrated into existing applications and APIs.',
+        'Codebase assistance, testing support, and developer workflows.',
+        'IT service-desk automation and log anomaly detection.',
+        'Customized Agentic AI workflows.',
+      ],
+    },
+    business: {
+      eyebrow: 'Industry 05',
+      title: 'Business & Enterprise Operations',
+      desc: 'AI for everyday business processes across departments.',
+      items: [
+        'Customer-support chatbots and AI agents.',
+        'Invoice, form, and document processing.',
+        'Sales and customer relationship management assistance.',
+        'Multi-agent workflows connecting multiple tools and processes.',
+      ],
+    },
+    retail: {
+      eyebrow: 'Industry 06',
+      title: 'Retail & E-commerce',
+      desc: 'AI for customer experience, product discovery, and retail operations.',
+      items: [
+        'AI shopping assistants and product recommendations.',
+        'Visual product search and image-based categorization.',
+        'Customer feedback analysis and support automation.',
+        'Sales insights and personalized digital experiences.',
+      ],
+    },
+    healthcare: {
+      eyebrow: 'Industry 07',
+      title: 'Healthcare & Life Sciences',
+      desc: 'AI for healthcare workflows, medical information, and research support.',
+      items: [
+        'Appointment scheduling, patient triage chatbots, and automated medical record summaries.',
+        'Medical document processing and information extraction.',
+        'Clinical knowledge retrieval and document search.',
+        'Healthcare operations and workflow automation.',
+      ],
+    },
+    finance: {
+      eyebrow: 'Industry 08',
+      title: 'Banking, Finance & Insurance',
+      desc: 'AI for financial services, risk analysis, and operational efficiency.',
+      items: [
+        'Intelligent document processing for financial records and insurance claims.',
+        'AI-powered customer-support assistants.',
+        'Insurance claims processing and workflow automation.',
+        'AI knowledge assistants for financial products and compliance documentation.',
+        'Multi-agent workflows for banking and insurance operations.',
+      ],
+    },
+    custom: {
+      eyebrow: 'Industry 09',
+      title: 'Custom Solutions',
+      desc: "Didn't find your sector? Let's talk about your requirement.",
+      items: [
+        'Customized AI solutions and integrations tailored to your business needs.',
+        'End-to-end chatbots, agentic workflows, and voice agents to automate complex processes.',
+        'Tailored software, computer vision, and intelligent system development for specialized use cases.',
+      ],
+      cta: true,
+    },
+  };
+
+  const industryModal = $('#industry-modal');
+  if (industryModal) {
+    const mEyebrow = $('[data-industry-eyebrow]', industryModal);
+    const mTitle = $('[data-industry-title]', industryModal);
+    const mDesc = $('[data-industry-desc]', industryModal);
+    const mList = $('[data-industry-list]', industryModal);
+    const mFooter = $('[data-industry-footer]', industryModal);
+    let lastFocus = null;
+
+    const openIndustry = (key) => {
+      const data = industryData[key];
+      if (!data) return;
+      lastFocus = document.activeElement;
+      mEyebrow.textContent = data.eyebrow;
+      mTitle.textContent = data.title;
+      mDesc.textContent = data.desc;
+      mList.innerHTML = data.items.map((t) => `<li>${t}</li>`).join('');
+      mFooter.hidden = !data.cta;
+      industryModal.hidden = false;
+      document.body.classList.add('industry-modal-open');
+      $('[data-industry-close]', industryModal)?.focus?.();
+      const closeBtn = $('.industry-modal-close', industryModal);
+      closeBtn?.focus();
+    };
+
+    const closeIndustry = () => {
+      industryModal.hidden = true;
+      document.body.classList.remove('industry-modal-open');
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    };
+
+    $$('[data-industry]').forEach((card) => {
+      card.addEventListener('click', () => openIndustry(card.dataset.industry));
+    });
+
+    industryModal.querySelectorAll('[data-industry-close]').forEach((el) => {
+      el.addEventListener('click', closeIndustry);
+    });
+
+    const cta = $('[data-industry-cta]', industryModal);
+    cta?.addEventListener('click', () => closeIndustry());
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !industryModal.hidden) closeIndustry();
+    });
+  }
 
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 })();

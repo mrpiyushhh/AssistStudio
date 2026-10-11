@@ -41,4 +41,65 @@
             03. Beyond Standalone AI -> We bring AI together with software, hardware, Robotics, computer vision, mobile applications, and connected technologies when the problem calls for it. We can also help integrate AI into existing products and workflows.
             04. From Idea to Implementation -> We aim to support the journey from understanding a problem and exploring an idea to building, integrating, and deploying a solution — with an approach tailored to the project's needs.
         - Add a CTA button Again with: "Let's explore what's possible." -> Have a business challenge or an AI idea? Let's discuss what we could build together.
-7. 
+
+### AI Across Industries
+
+1. Manufacturing & Industry: AI for factories, production lines, equipment, and quality control.
+    - Computer vision for defect detection, unit countings, vision monitoring and quality inspection.
+    - Predictive maintenance and equipment anomaly detection.
+    - Production monitoring and process optimization.
+    - AI assistants for technical manuals and operational knowledge.
+    - AI/Vision based Robotics and industrial automation integrations.
+
+2. Logistics & Supply Chain: AI for moving, tracking, storing, and delivering goods.
+    - Inventory monitoring and stock forecasting.
+    - Document extraction from invoices, purchase orders, and shipping records.
+    - Warehouse computer vision and package identification.
+    - Warehouse automation with vision-based tracking.
+    - AI assistants for shipment status and operational queries.
+
+3. Agriculture & AgriTech: AI for farms, crops, agricultural equipment, and resource management.
+    - Crop disease and pest detection using computer vision.
+    - Crop health monitoring from images and sensor data.
+    - Agricultural knowledge assistants and farm-management automation.
+    - Smart irrigation and IoT-based monitoring.
+
+4. IT & Software: AI for software teams, technical operations, and existing digital products.
+    - AI copilots and internal knowledge assistants.
+    - Intelligent search across technical documentation.
+    - Resume screening and candidate matching
+    - Employee support assistants and policy Q&A
+    - AI features integrated into existing applications and APIs.
+    - Codebase assistance, testing support, and developer workflows.
+    - IT service-desk automation and log anomaly detection.
+    - Customized Agentic AI workflows.
+
+5. Business & Enterprise Operations: AI for everyday business processes across departments.
+    - Customer-support chatbots and AI agents.
+    - Invoice, form, and document processing.
+    - Sales and customer relationship management assistance.
+    - Multi-agent workflows connecting multiple tools and processes.
+
+6. Retail & E-commerce: AI for customer experience, product discovery, and retail operations.
+    - AI shopping assistants and product recommendations.
+    - Visual product search and image-based categorization.
+    - Customer feedback analysis and support automation.
+    - Sales insights and personalized digital experiences.
+
+7. Healthcare & Life Sciences: AI for healthcare workflows, medical information, and research support.
+    - Appointment scheduling, patient triage chatbots, and automated medical record summaries.
+    - Medical document processing and information extraction.
+    - Clinical knowledge retrieval and document search.
+    - Healthcare operations and workflow automation.
+
+8. Banking, Finance & Insurance: AI for financial services, risk analysis, and operational efficiency.
+    - Intelligent document processing for financial records and insurance claims.
+    - AI-powered customer-support assistants.
+    - Insurance claims processing and workflow automation.
+    - AI knowledge assistants for financial products and compliance documentation.
+    - Multi-agent workflows for banking and insurance operations.
+
+9. Custom Solutions: Didn't found your sector? Let's talk about your requirement.
+    - Customized AI solutions and integrations tailored to your business needs.
+    - End-to-end chatbots, agentic workflows, voice agents to automate complex processes.
+    - Tailored software, computer vision, and intelligent system development for specialized use cases.
