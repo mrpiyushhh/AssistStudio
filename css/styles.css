@@ -1486,8 +1486,8 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(36px, 4.2vw, 48px);
+  justify-content: flex-start;
+  padding: clamp(32px, 3.6vw, 40px);
   background: linear-gradient(165deg, #151720 0%, #0C0D11 100%);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 28px;
@@ -1571,12 +1571,12 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
   position: relative;
   z-index: 1;
   font-family: var(--serif);
-  font-size: clamp(32px, 3.2vw, 44px);
+  font-size: clamp(24px, 2.4vw, 32px);
   font-weight: 400;
-  line-height: 1.02;
+  line-height: 1.12;
   letter-spacing: -0.015em;
   color: var(--paper);
-  margin: 0 0 16px;
+  margin: 0 0 14px;
 }
 
 .service-title em {
@@ -1592,8 +1592,8 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
   font-size: 15px;
   line-height: 1.6;
   color: var(--muted);
-  margin: 0 0 32px;
-  max-width: 44ch;
+  margin: 0;
+  max-width: none;
 }
 
 .service-chips {
