@@ -142,3 +142,10 @@ Manufacturing & Industry · Logistics & Supply Chain · Agriculture & AgriTech �
 - Take solutions from development to deployment with the infrastructure, integrations, and maintenance needed to keep them running.
 - Cloud deployment · API integration · System integration · Monitoring · Maintenance and optimization
 - Best matched areas: Covers all the areas.
+
+
+URL:
+https://script.google.com/macros/s/AKfycbytms_ebxtRjlRZWgqfA7Ku7kvFks1FtuTmPWGXMxIOCl_RdEdUvuJMEDNI4RK0RYJK6A/exec
+
+Deployment ID:
+AKfycbytms_ebxtRjlRZWgqfA7Ku7kvFks1FtuTmPWGXMxIOCl_RdEdUvuJMEDNI4RK0RYJK6A

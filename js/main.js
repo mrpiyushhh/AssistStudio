@@ -863,16 +863,26 @@
       'Call time (their timezone)': when ? when.visitor : '',
       'What they are building': $('#f-project').value.trim(),
       'Call start (UTC)': when ? when.utc : '',
+      visitor_timezone: when && when.tz ? when.tz : '',
     };
 
-    // With data-endpoint set (e.g. Formspree) the booking is sent; without it, demo mode.
+    // data-endpoint = Google Apps Script web app URL (see backend/google-apps-script/SETUP.md).
+    // text/plain avoids a CORS preflight; Apps Script still receives JSON in postData.contents.
     const endpoint = (form.dataset.endpoint || '').trim();
     const send = endpoint
       ? fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload),
-      }).then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); })
+        redirect: 'follow',
+      }).then(async (r) => {
+        const text = await r.text();
+        let data = null;
+        try { data = JSON.parse(text); } catch (err) { /* non-JSON still OK if HTTP ok */ }
+        if (!r.ok || (data && data.ok === false)) {
+          throw new Error((data && data.error) || `HTTP ${r.status}`);
+        }
+      })
       : new Promise((resolve) => setTimeout(resolve, 700));
 
     send.then(() => {
