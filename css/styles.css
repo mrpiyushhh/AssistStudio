@@ -2186,6 +2186,23 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
   background:
     radial-gradient(ellipse at 30% 30%, rgba(198, 244, 50, 0.2), transparent 55%),
     linear-gradient(160deg, #1a1c24 0%, #0e0f14 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+.industry-visual.has-image {
+  background: #0e0f14;
+  padding: 0;
+}
+
+.industry-visual.has-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .industry-visual span {
@@ -2204,6 +2221,18 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
 .industry-visual-7 { background: radial-gradient(ellipse at 30% 60%, rgba(198, 244, 50, 0.16), transparent 55%), linear-gradient(160deg, #1b1d26, #0e0f14); }
 .industry-visual-8 { background: radial-gradient(ellipse at 65% 45%, rgba(198, 244, 50, 0.2), transparent 50%), linear-gradient(160deg, #171920, #0d0e13); }
 .industry-visual-9 { background: radial-gradient(ellipse at 45% 30%, rgba(198, 244, 50, 0.28), transparent 52%), linear-gradient(160deg, #1a1c24, #0e0f14); }
+
+.industry-visual-2.has-image,
+.industry-visual-3.has-image,
+.industry-visual-4.has-image,
+.industry-visual-5.has-image,
+.industry-visual-6.has-image,
+.industry-visual-7.has-image,
+.industry-visual-8.has-image,
+.industry-visual-9.has-image,
+.industry-visual-1.has-image {
+  background: #0e0f14;
+}
 
 .industry-body {
   display: flex;
@@ -2491,6 +2520,23 @@ body.industry-modal-open .mobile-cta {
     linear-gradient(165deg, #151720 0%, #0C0D11 100%);
   border-radius: 16px;
   color: var(--paper);
+  overflow: hidden;
+  position: relative;
+}
+
+.service-placeholder.has-image {
+  background: #0C0D11;
+  padding: 0;
+}
+
+.service-placeholder.has-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .service-placeholder span {
@@ -2520,6 +2566,10 @@ body.industry-modal-open .mobile-cta {
   }
 
   .service-placeholder {
+    min-height: 160px;
+  }
+
+  .service-placeholder.has-image {
     min-height: 160px;
   }
 }
