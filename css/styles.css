@@ -2178,7 +2178,7 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
 }
 
 .industry-visual {
-  height: 140px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2200,9 +2200,14 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: fill;
   object-position: center;
   display: block;
+  border: 0;
 }
 
 .industry-visual span {
@@ -2423,7 +2428,7 @@ body.industry-modal-open {
   }
 
   .industry-visual {
-    height: 120px;
+    height: 180px;
   }
 
   .industry-modal {
@@ -2518,7 +2523,7 @@ body.industry-modal-open .mobile-cta {
   background:
     radial-gradient(ellipse at 40% 30%, rgba(198, 244, 50, 0.16), transparent 55%),
     linear-gradient(165deg, #151720 0%, #0C0D11 100%);
-  border-radius: 16px;
+  border-radius: 0;
   color: var(--paper);
   overflow: hidden;
   position: relative;
@@ -2527,6 +2532,12 @@ body.industry-modal-open .mobile-cta {
 .service-placeholder.has-image {
   background: #0C0D11;
   padding: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 0;
 }
 
 .service-placeholder.has-image img {
@@ -2534,9 +2545,19 @@ body.industry-modal-open .mobile-cta {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: fill;
   object-position: center;
   display: block;
+  border: 0;
+}
+
+/* Don't scale/translate image panels on hover — that creates visible gaps at the edges */
+.project-card:hover .service-placeholder.has-image {
+  transform: none;
 }
 
 .service-placeholder span {
@@ -2566,11 +2587,13 @@ body.industry-modal-open .mobile-cta {
   }
 
   .service-placeholder {
-    min-height: 160px;
+    min-height: 200px;
   }
 
   .service-placeholder.has-image {
-    min-height: 160px;
+    position: absolute;
+    inset: 0;
+    min-height: 0;
   }
 }
 
@@ -4426,9 +4449,9 @@ main {
 
   .project-card {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
+    grid-template-rows: auto minmax(220px, 42vw);
     height: auto;
-    min-height: 520px;
+    min-height: 0;
   }
 
   .project-card::after {
@@ -4495,12 +4518,20 @@ main {
 
   .project-media {
     aspect-ratio: auto;
-    min-height: 0;
+    min-height: 240px;
+    position: relative;
   }
 
   .service-placeholder {
+    min-height: 240px;
+    border-radius: 0;
+  }
+
+  .service-placeholder.has-image {
+    position: absolute;
+    inset: 0;
     min-height: 0;
-    border-radius: 0 0 var(--r-card) var(--r-card);
+    border-radius: 0;
   }
 
   .project-media .mock {
@@ -4634,8 +4665,8 @@ main {
   }
 
   .project-card {
-    min-height: 480px;
-    grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
+    min-height: 0;
+    grid-template-rows: auto minmax(200px, 42vw);
   }
 
   .project-info {
@@ -4754,7 +4785,7 @@ main {
   .project-card {
     height: calc(100svh - var(--nav-h) - 40px);
     max-height: 780px;
-    grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
+    grid-template-rows: minmax(0, 1.15fr) minmax(0, 1fr);
   }
 
   .project-media {
@@ -4764,6 +4795,24 @@ main {
 
   .service-placeholder {
     min-height: 0;
+  }
+
+  .service-placeholder.has-image {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+  }
+
+  .service-placeholder.has-image img {
+    object-fit: fill;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .industry-visual.has-image img {
+    object-fit: fill;
+    min-width: 100%;
+    min-height: 100%;
   }
 
   .project-card::after {
