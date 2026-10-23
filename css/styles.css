@@ -1888,7 +1888,7 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
 
 .process-visual-inner {
   width: 100%;
-  min-height: 140px;
+  min-height: 200px;
   border-radius: 20px;
   border: 1px solid var(--line);
   background:
@@ -1902,6 +1902,27 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
   color: var(--paper);
   overflow: hidden;
   position: relative;
+}
+
+.process-visual-inner.has-image {
+  background: #0e0f14;
+  padding: 0;
+  min-height: 220px;
+}
+
+.process-visual-inner.has-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: fill;
+  object-position: center;
+  display: block;
+  border: 0;
 }
 
 .process-visual-icon {
@@ -1930,6 +1951,18 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
 .process-visual-7 { background: radial-gradient(ellipse at 30% 60%, rgba(198, 244, 50, 0.18), transparent 55%), linear-gradient(160deg, #1b1d26, #0e0f14); }
 .process-visual-8 { background: radial-gradient(ellipse at 65% 45%, rgba(198, 244, 50, 0.2), transparent 50%), linear-gradient(160deg, #171920, #0d0e13); }
 .process-visual-9 { background: radial-gradient(ellipse at 45% 30%, rgba(198, 244, 50, 0.24), transparent 52%), linear-gradient(160deg, #1a1c24, #0e0f14); }
+
+.process-visual-1.has-image,
+.process-visual-2.has-image,
+.process-visual-3.has-image,
+.process-visual-4.has-image,
+.process-visual-5.has-image,
+.process-visual-6.has-image,
+.process-visual-7.has-image,
+.process-visual-8.has-image,
+.process-visual-9.has-image {
+  background: #0e0f14;
+}
 
 @media (max-width: 960px) {
   .process-section > .wrap > .sec-head {
@@ -2098,8 +2131,16 @@ html:not(.js) .theme-light :is(.h2, .h3) em::after {
   }
 
   .process-visual-inner {
-    min-height: 140px;
+    min-height: 160px;
     border-radius: 16px;
+  }
+
+  .process-visual-inner.has-image {
+    min-height: 180px;
+  }
+
+  .process-visual-inner.has-image img {
+    object-fit: fill;
   }
 }
 
