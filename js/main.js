@@ -415,7 +415,7 @@
   const heroTitle = $('.hero-title');
   if (heroTitle) setTimeout(() => heroTitle.classList.add('is-risen'), reduceMotion ? 0 : 1500);
 
-  /* ---------- Testimonials (any number) ---------- */
+  /* ---------- Our Thoughts (any number) ---------- */
   const quotes = $$('.quote');
   const current = $('[data-current]');
   const total = $('[data-total]');
@@ -449,7 +449,7 @@
   $('[data-next]')?.addEventListener('click', () => show(index + 1));
 
   // Arrow keys while focus is in the section, and swipe on touch screens
-  $('#testimonials')?.addEventListener('keydown', (e) => {
+  $('#thoughts')?.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') show(index - 1);
     if (e.key === 'ArrowRight') show(index + 1);
   });
@@ -477,7 +477,7 @@
     const toDate = (key) => { const [y, m, d] = key.split('-').map(Number); return new Date(y, m - 1, d); };
 
     const cfg = {
-      studioTz: root.dataset.studioTz || 'Europe/London',
+      studioTz: root.dataset.studioTz || 'Asia/Kolkata',
       start: toMin(root.dataset.start || '09:00'),
       end: toMin(root.dataset.end || '18:00'),
       step: Number(root.dataset.step) || 30,
