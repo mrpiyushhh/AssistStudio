@@ -1068,4 +1068,64 @@
   }
 
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+  /* ---------- Chatbot widget (UI + mock replies) ---------- */
+  const chatbotRoot = $('[data-chatbot]');
+  const chatbotPanel = $('#chatbot-panel');
+  const chatbotToggle = $('[data-chatbot-toggle]');
+  const chatbotClose = $('[data-chatbot-close]');
+  const chatbotForm = $('[data-chatbot-form]');
+  const chatbotMessages = $('[data-chatbot-messages]');
+  const chatbotInput = $('#chatbot-input');
+
+  if (chatbotRoot && chatbotPanel && chatbotToggle) {
+    const setOpen = (open) => {
+      chatbotRoot.classList.toggle('is-open', open);
+      chatbotPanel.hidden = !open;
+      chatbotToggle.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('chatbot-open', open);
+      if (open) {
+        setTimeout(() => chatbotInput?.focus(), 50);
+      } else {
+        chatbotToggle.focus();
+      }
+    };
+
+    chatbotToggle.addEventListener('click', () => {
+      setOpen(chatbotPanel.hidden);
+    });
+    chatbotClose?.addEventListener('click', () => setOpen(false));
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !chatbotPanel.hidden) setOpen(false);
+    });
+
+    const appendMsg = (text, role) => {
+      const el = document.createElement('div');
+      el.className = `chatbot-msg chatbot-msg--${role}`;
+      const p = document.createElement('p');
+      p.textContent = text;
+      el.appendChild(p);
+      chatbotMessages.appendChild(el);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      return el;
+    };
+
+    chatbotForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = (chatbotInput?.value || '').trim();
+      if (!text) return;
+      chatbotInput.value = '';
+      appendMsg(text, 'user');
+
+      const typing = appendMsg('…', 'bot');
+      typing.classList.add('chatbot-msg--typing');
+
+      setTimeout(() => {
+        typing.remove();
+        // Placeholder until real chatbot server is wired
+        appendMsg('response from bot', 'bot');
+      }, 450 + Math.random() * 350);
+    });
+  }
 })();

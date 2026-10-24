@@ -983,9 +983,45 @@
         </svg></span></a>
   </div>
 
+  <!-- Chatbot widget (UI only — mock replies for now) -->
+  <div class="chatbot" data-chatbot>
+    <div class="chatbot-panel" id="chatbot-panel" hidden role="dialog" aria-labelledby="chatbot-title" aria-modal="false">
+      <header class="chatbot-header">
+        <div class="chatbot-header-text">
+          <p class="chatbot-eyebrow">AssistStudio</p>
+          <h2 class="chatbot-title" id="chatbot-title">Chat with us</h2>
+        </div>
+        <button type="button" class="chatbot-close" data-chatbot-close aria-label="Close chat">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </header>
+      <div class="chatbot-messages" data-chatbot-messages>
+        <div class="chatbot-msg chatbot-msg--bot">
+          <p>Hi — ask anything about our services or process. I’m here to help.</p>
+        </div>
+      </div>
+      <form class="chatbot-form" data-chatbot-form>
+        <label class="sr-only" for="chatbot-input">Your message</label>
+        <input class="chatbot-input" id="chatbot-input" name="message" type="text" placeholder="Type a message…" autocomplete="off" maxlength="500">
+        <button type="submit" class="chatbot-send" aria-label="Send message">
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M3 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </div>
+    <button type="button" class="chatbot-fab" data-chatbot-toggle aria-expanded="false" aria-controls="chatbot-panel" aria-label="Open chat">
+      <span class="chatbot-fab-pulse" aria-hidden="true"></span>
+      <span class="chatbot-fab-icon chatbot-fab-icon--chat" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none"><path d="M5 18.5V7.8A2.8 2.8 0 0 1 7.8 5h8.4A2.8 2.8 0 0 1 19 7.8v6.4a2.8 2.8 0 0 1-2.8 2.8H9.2L5 18.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 10h6M9 13h3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </span>
+      <span class="chatbot-fab-icon chatbot-fab-icon--close" aria-hidden="true">
+        <svg viewBox="0 0 20 20" width="20" height="20"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+      </span>
+    </button>
+  </div>
+
   <div class="cursor-view" aria-hidden="true">View</div>
 
-  <script src="./js/main.js?v=18"></script>
+  <script src="./js/main.js?v=19"></script>
   <script src="./js/scene.js"></script>
   <script src=".js/hero/hero-space.js?v=18"></script>
   <script type="importmap">
